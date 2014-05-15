@@ -8,7 +8,7 @@ if [ "$#" -ne 2 ]; then
   exit 0
 fi
 
-curl -v -s -X POST \
+curl -s -X POST \
   -d "email=$1" \
   -d "password=$2" \
   $BASE_URL/current/act | tee $DIR/.lastresponse

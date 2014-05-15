@@ -8,6 +8,6 @@ if [ "$#" -lt 1 ]; then
   exit 0
 fi
 
-curl -v -s -X PUT \
+curl -s -X PUT \
   --header "X-Auth-Token: $GR8_BI_TOK" \
   "$BASE_URL/current/$GR8_BI_ACT/job/$1/run/http?$2" | tee $DIR/.lastresponse

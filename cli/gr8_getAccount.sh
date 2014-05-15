@@ -8,6 +8,6 @@ if [ "$#" -ne 3 ]; then
   exit 0
 fi
 
-curl -s -v -u $1:$2 \
+curl -s -u $1:$2 \
   -X GET \
   $BASE_URL/current/act/$3 | tee $DIR/.lastresponse
