@@ -1,11 +1,10 @@
 #!/bin/bash
 
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
 if [ "$#" -ne 2 ]; then
   echo "Usage: " `basename $0` "email password"
   exit 0
 fi
 
-curl -s -X POST \
-  -d "email=$1" \
-  -d "password=$2" \
-  $BASE_URL/current/act
+$DIR/cli_createToken.sh $1 $2 43200
