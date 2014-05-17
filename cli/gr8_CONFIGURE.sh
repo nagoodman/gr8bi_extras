@@ -7,4 +7,4 @@ if [ "$#" -ne 2 ]; then
   exit 0
 fi
 
-$DIR/gr8_createToken.sh $1 $2 43200
+$DIR/gr8_createToken.sh $1 $2 2592000 
