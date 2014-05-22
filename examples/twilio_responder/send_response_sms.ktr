@@ -74,8 +74,8 @@
   </notepads>
   <order>
   <hop> <from>Generate Rows</from><to>Swap From&#x2f;To for response</to><enabled>Y</enabled> </hop>
-  <hop> <from>Swap From&#x2f;To for response</from><to>Modified Java Script Value</to><enabled>Y</enabled> </hop>
-  <hop> <from>Modified Java Script Value</from><to>Twilio POST&#x21;</to><enabled>Y</enabled> </hop>
+  <hop> <from>Swap From&#x2f;To for response</from><to>Message</to><enabled>Y</enabled> </hop>
+  <hop> <from>Message</from><to>Twilio Text Response</to><enabled>Y</enabled> </hop>
   </order>
   <step>
     <name>Generate Rows</name>
@@ -109,15 +109,15 @@
     <last_time_field>FiveSecondsAgo</last_time_field>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>61</xloc>
-      <yloc>169</yloc>
+      <xloc>55</xloc>
+      <yloc>65</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Twilio POST&#x21;</name>
-    <type>HTTPPOST</type>
+    <name>Message</name>
+    <type>ScriptValueMod</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -126,46 +126,21 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <postafile>N</postafile>
-    <encoding/>
-    <url>https&#x3a;&#x2f;&#x2f;api.twilio.com&#x2f;2010-04-01&#x2f;Accounts&#x2f;&#x24;&#x7b;AccountSid&#x7d;&#x2f;Messages.json</url>
-    <urlInField>N</urlInField>
-    <urlField/>
-    <requestEntity/>
-    <httpLogin>&#x24;&#x7b;AccountSid&#x7d;</httpLogin>
-    <httpPassword>&#x24;&#x7b;TWILIO_PASSWORD&#x7d;</httpPassword>
-    <proxyHost/>
-    <proxyPort/>
-    <socketTimeout>10000</socketTimeout>
-    <connectionTimeout>10000</connectionTimeout>
-    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
-    <lookup>
-      <arg>
-        <name>From</name>
-        <parameter>From</parameter>
-        <header>N</header>        </arg>
-      <arg>
-        <name>To</name>
-        <parameter>To</parameter>
-        <header>N</header>        </arg>
-      <arg>
-        <name>Body</name>
-        <parameter>Body</parameter>
-        <header>N</header>        </arg>
-      <arg>
-        <name>Content-Type</name>
-        <parameter>Content-Type</parameter>
-        <header>Y</header>        </arg>
-      </lookup>
-    <result>
-      <name>result</name>
-      <code/>
-      <response_time/>
-      </result>
-     <cluster_schema/>
+    <compatible>N</compatible>
+    <optimizationLevel>9</optimizationLevel>
+    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
+        <jsScript_name>Script 1</jsScript_name>
+        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var Body &#x3d; &#x22;&#x5c;&#x22;&#x22; &#x2b; ORIG_BODY &#x2b; &#x22;&#x5c;&#x22; back atchya&#x21;&#x22;</jsScript_script>
+      </jsScript>    </jsScripts>    <fields>      <field>        <name>Body</name>
+        <rename>Body</rename>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        <replace>N</replace>
+      </field>    </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>570</xloc>
-      <yloc>167</yloc>
+      <xloc>278</xloc>
+      <yloc>64</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
@@ -221,15 +196,15 @@
     </fields>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>206</xloc>
-      <yloc>176</yloc>
+      <xloc>176</xloc>
+      <yloc>66</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Modified Java Script Value</name>
-    <type>ScriptValueMod</type>
+    <name>Twilio Text Response</name>
+    <type>HTTPPOST</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -238,21 +213,46 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <compatible>N</compatible>
-    <optimizationLevel>9</optimizationLevel>
-    <jsScripts>      <jsScript>        <jsScript_type>0</jsScript_type>
-        <jsScript_name>Script 1</jsScript_name>
-        <jsScript_script>&#x2f;&#x2f;Script here&#xa;&#xa;var Body &#x3d; &#x22;&#x5c;&#x22;&#x22; &#x2b; ORIG_BODY &#x2b; &#x22;&#x5c;&#x22; back atchya&#x21;&#x22;</jsScript_script>
-      </jsScript>    </jsScripts>    <fields>      <field>        <name>Body</name>
-        <rename>Body</rename>
-        <type>String</type>
-        <length>-1</length>
-        <precision>-1</precision>
-        <replace>N</replace>
-      </field>    </fields>     <cluster_schema/>
+    <postafile>N</postafile>
+    <encoding/>
+    <url>https&#x3a;&#x2f;&#x2f;api.twilio.com&#x2f;2010-04-01&#x2f;Accounts&#x2f;&#x24;&#x7b;AccountSid&#x7d;&#x2f;Messages.json</url>
+    <urlInField>N</urlInField>
+    <urlField/>
+    <requestEntity/>
+    <httpLogin>&#x24;&#x7b;AccountSid&#x7d;</httpLogin>
+    <httpPassword>&#x24;&#x7b;TWILIO_PASSWORD&#x7d;</httpPassword>
+    <proxyHost/>
+    <proxyPort/>
+    <socketTimeout>10000</socketTimeout>
+    <connectionTimeout>10000</connectionTimeout>
+    <closeIdleConnectionsTime>-1</closeIdleConnectionsTime>
+    <lookup>
+      <arg>
+        <name>From</name>
+        <parameter>From</parameter>
+        <header>N</header>        </arg>
+      <arg>
+        <name>To</name>
+        <parameter>To</parameter>
+        <header>N</header>        </arg>
+      <arg>
+        <name>Body</name>
+        <parameter>Body</parameter>
+        <header>N</header>        </arg>
+      <arg>
+        <name>Content-Type</name>
+        <parameter>Content-Type</parameter>
+        <header>Y</header>        </arg>
+      </lookup>
+    <result>
+      <name>result</name>
+      <code/>
+      <response_time/>
+      </result>
+     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>394</xloc>
-      <yloc>176</yloc>
+      <xloc>385</xloc>
+      <yloc>61</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

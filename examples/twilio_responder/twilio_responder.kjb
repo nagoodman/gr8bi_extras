@@ -121,6 +121,27 @@
       <bordercolorblue>100</bordercolorblue>
       <drawshadow>Y</drawshadow>
     </notepad>
+    <notepad>
+      <note>Twilio POST contains a BUNCH of fields.&#xa;&#xa;We need&#xa;&#x24;&#x7b;To&#x7d; - number the person sent the sms too&#xa;&#x24;&#x7b;From&#x7d; - number of the person who sent the sms&#xa;&#x24;&#x7b;Body&#x7d; - The text of the SMS sent from the person.&#xa;&#x24;&#x7b;AccountSid&#x7d; - The account that received the message&#x3b; we&#x27;ll use this to SMS back&#xa;&#x24;&#x7b;TWILIO_PASSWORD&#x7d; - The secret key that allows us to send a message back to original sender&#xa;</note>
+      <xloc>33</xloc>
+      <yloc>22</yloc>
+      <width>465</width>
+      <heigth>109</heigth>
+      <fontname/>
+      <fontsize>-1</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
 
 </job>
