@@ -4,11 +4,12 @@
 
   <body>
 
-    <form action="http://localhost:5000/current/act-f1e846d6/job/job-8d1917f3/run/web?token=tok" method="POST"> 
+    <form action="http://localhost:5000/current/act-f1e846d6/job/job-8d1917f3/run/web" method="POST"> 
       To: <input type="text" name="to" /> <br/>
       From: <input type="text" name="from" />
       <input type="hidden" name="redirect_success" value="http://www.gr8.bi/"/>
       <input type="hidden" name="redirect_error" value="http://www.gr8.bi/docs.html?mykey"/>
+      <input type="hidden" name="token" value="tok-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiZ2xvYmFsIiwiYWN0X2lkIjoiYWN0LWYxZTg0NmQ2IiwiZXhwIjoxNDAzMzkwNzY5fQ.0V2zDWPkxolQRjIXgvUgAGNKatGwOI24hj0L_SkhhyU"/>
 
       <input type="submit" name="submit" value="Run Job" />
     </form>

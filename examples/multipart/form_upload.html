@@ -4,12 +4,11 @@
 
   <body>
 
-    <form action="http://localhost:5000/current/act-f1e846d6/job/job-8d1917f3/run/http?token=token" method="POST" enctype="multipart/form-data"> 
+    <form action="http://localhost:5000/current/act-f1e846d6/job/job-8d1917f3/run/http" method="POST" enctype="multipart/form-data"> 
       To: <input type="text" name="to" /> <br/>
       From: <input type="text" name="from" /> <br/>
       <input type="file" name="myfile" size="20"><br/>
-      <input type="file" name="myfile2" size="20"><br/>
-
+      <input type="hidden" name="token" value="tok-eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ0eXBlIjoiZ2xvYmFsIiwiYWN0X2lkIjoiYWN0LWYxZTg0NmQ2IiwiZXhwIjoxNDAzMzkwNzY5fQ.0V2zDWPkxolQRjIXgvUgAGNKatGwOI24hj0L_SkhhyU"/>
 
       <input type="submit" name="submit" value="Run Job" />
     </form>
