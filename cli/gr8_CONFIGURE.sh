@@ -8,3 +8,4 @@ if [ "$#" -ne 2 ]; then
 fi
 
 $DIR/gr8_createToken.sh $1 $2 2592000 
+cp $DIR/.lastresponse ~/.gr8bi_token

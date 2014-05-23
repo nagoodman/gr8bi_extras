@@ -16,19 +16,21 @@ fi
 cd $1
 zip -r /tmp/bundle.zip .
 
-echo Uploading Job Bundle
+echo Uploading Job Bundle 
 
 $DIR/gr8_uploadJobBundle.sh /tmp/bundle.zip AutoBundleName
 
 BUN_ID=`cat $DIR/.lastresponse | egrep bun_id | cut -f4 -d'"'`
 
 echo "Created bundle: $BUN_ID"
+sleep 5000
 
 echo Creating job with entry_point : $2
 
 $DIR/gr8_createJob.sh $BUN_ID $2 AutoJobName
 
 JOB_ID=`cat $DIR/.lastresponse | egrep job_id | cut -f4 -d'"'`
+sleep 5000
 
 echo "Created Job: $JOB_ID"
 
