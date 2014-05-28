@@ -1,18 +1,5 @@
-CLI
-===
+Herein contains:
 
-The CLI for gr8.BI requires:
- - cURL command line
- - tee
- - read/write access to ~/.gr8bi_token
- - zip (only for pushAndRun)
- - read/write access to cli directory
+* Rough around the edges [command line interface](cli/README.md) to the [cloud based Data Flow service gr8.BI](http://www.gr8.bi).
+* [Examples](/examples/README.md) of how to do cool things with the service.
 
-CLI INSTALLATION
-================
-
-```
-cd cli
-./gr8_CONFIGURE.sh youremail\@yourdomain.com password
-```
-This creates a token (30 days), and places it in ~/.gr8bi_token
