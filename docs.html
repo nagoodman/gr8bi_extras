@@ -1,0 +1,328 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>gr8.BI Documentation</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200"><style>/* Highlight.js Theme */
+.tomorrow-comment,pre .comment,pre .title{color:#8e908c}.tomorrow-red,pre .attribute,pre .css .class,pre .css .id,pre .css .pseudo,pre .html .doctype,pre .regexp,pre .ruby .constant,pre .tag,pre .variable,pre .xml .doctype,pre .xml .pi,pre .xml .tag .title{color:#c82829}.tomorrow-orange,pre .built_in,pre .constant,pre .literal,pre .number,pre .params,pre .preprocessor{color:#f5871f}.tomorrow-yellow,pre .class,pre .css .rules .attribute,pre .ruby .class .title{color:#eab700}.tomorrow-green,pre .header,pre .inheritance,pre .ruby .symbol,pre .string,pre .value,pre .xml .cdata{color:#718c00}.tomorrow-aqua,pre .css .hexcolor{color:#3e999f}.tomorrow-blue,pre .coffeescript .title,pre .function,pre .javascript .title,pre .perl .sub,pre .python .decorator,pre .python .title,pre .ruby .function .title,pre .ruby .title .keyword{color:#4271ae}.tomorrow-purple,pre .javascript .function,pre .keyword{color:#8959a8}pre code{display:block;background:#fff;color:#4d4d4c;font-family:Menlo,Monaco,Consolas,monospace;line-height:1.5;border:1px solid #ccc;padding:10px}</style><style type="text/css">body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav id="nav" style="margin-top: 38px;" class="col-md-3 collapse hidden-sm hidden-xs"><div class="list-group"><a href="#" class="list-group-item heading">Home</a></div><div class="list-group"><a href="#page:private-beta" class="list-group-item heading">PRIVATE BETA</a></div><div class="list-group"><a href="#page:getting-started-fast" class="list-group-item heading">Getting Started Fast</a></div><div class="list-group"><a href="#page:getting-started-api" class="list-group-item heading">Getting Started API</a></div><div class="list-group"><a href="#page:examples" class="list-group-item heading">Examples</a></div><div class="list-group"><a href="#page:command-line-interface" class="list-group-item heading">Command Line Interface</a></div><div class="list-group"><a href="#page:designing-data-flows" class="list-group-item heading">Designing Data Flows</a></div><div class="list-group"><a href="#page:runtime" class="list-group-item heading">Runtime</a></div><div class="list-group"><a href="#page:limitations-and-quotas" class="list-group-item heading">Limitations and Quotas</a></div><div class="list-group"><a href="#page:pricing" class="list-group-item heading">Pricing</a></div></nav><div class="col-md-9"><div data-bind="visible: page() == 'home'"><header><div class="page-header"><h1 id="top">gr8.BI Documentation</h1></div></header><div class="description"><p><strong><strong>NOTE: This service is in PRIVATE BETA until further notice</strong></strong></p>
+<p>This is the primary technical documentation for building data flows on the gr8.BI Data Flow service.</p>
+<p>You must have <a href="http://www.gr8.bi/signup.html">signed up</a> for the private beta, have received an account ID (<code>act-12345678</code>) and an email officially acknowleding your acceptance into the PRIVATE BETA.  </p>
+<ul>
+<li><a href="#page:getting-started-fast">Getting Started FAST</a>.  This guide helps you install the Command Line Interface (CLI), and shows you how to upload/run one of our example jobs! </li>
+<li><a href="#page:getting-started-api">Getting Started API</a>.  This guide runs you through how to upload and run a job on our service using our REST API.  A “Hello World” for someone wanting to see the actual API use. </li>
+</ul>
+</div><a href="#page:private-beta" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'private-beta', style: {marginTop: page() == 'private-beta' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="private-beta">PRIVATE BETA&nbsp;<a href="#page:private-beta"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>Welcome to the PRIVATE BETA for gr8.BI.  When things start out, they’re always a bit rocky and we know that good, honest communication is the best way for everyone to get what they ultimately need.  Our expectation of those in PRIVATE BETA are higher than those of a generally available service; please make sure you’ve read and agree to participate with the following expectations.</p>
+<p><strong><em>You Agree To</em></strong>:</p>
+<ul>
+<li>Be generally good natured, patient, positive and only “helpful-critical” of the service.  It’s a BETA, full of bugs, systems will crash, things will get corrupted, etc.</li>
+<li>Place NO sensitive information on the platform; including passwords, etc.  We’ve built our service to be secure, but it’s a BETA so we’re now validating it is.  Connect us to your development systems now, not production.</li>
+<li>Tell us what you’re doing and what appeals about the service.  </li>
+<li>Don’t be a jerk and send SPAM, perform unintended nefarious tasks, etc.</li>
+<li>Communicate regularly things you like, don’t like, hate and love.  We can’t always implement everything but we know it’s important for us to hear it so we can plan what we do implement!!!</li>
+<li>Allow us to share your feedback to the general public (“This service saved me close to $200 Million USD a day!”).</li>
+</ul>
+<p><strong><em>We Agree To</em></strong>:</p>
+<ul>
+<li>Let you use our service for FREE and give you at least 60 days notice before requiring billing/payment for use.</li>
+<li>Provide our best efforts to keep the service stable, and operating so your Data Flows run smoothly.</li>
+<li>Listen to your use case, guide you on implementing a solution on gr8.BI.</li>
+<li>Keep the API relatively stable; things may change and we’ll try and email before hand.  Most API changes at this point should be additive.</li>
+<li>Keep an open door at all times: email me <a href="mailto:ngoodman@gr8.bi">ngoodman@gr8.bi</a>.</li>
+</ul>
+<p>Welcome, and have Fun!
+Nick </p>
+</div></div><a href="#page:getting-started-fast" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'getting-started-fast', style: {marginTop: page() == 'getting-started-fast' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="getting-started-fast">Getting Started Fast&nbsp;<a href="#page:getting-started-fast"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>We assume you have access to <code>curl</code>, and you’ve been emailed that your account is active in the PRIVATE BETA.  Our CLI is bash/curl based you so need to be on OSX or Linux.</p>
+<h2 id="step-1-download-cli-examples-">Step 1 (Download CLI/Examples)</h2>
+<p>You can get the CLI through git (<code>git clone https://github.com/nagoodman/gr8bi_extras.git</code>) or by downloading a zip of the latest: (<a href="https://github.com/nagoodman/gr8bi_extras/archive/master.zip">https://github.com/nagoodman/gr8bi_extras/archive/master.zip</a>).  We’ll refer to this directory as <code>GR8_BI_EXTRAS_LOCATION</code></p>
+<h2 id="step-2-install-cli-">Step 2 (Install CLI)</h2>
+<p>Head to the directory <code>GR8_BI_EXTRAS_LOCATION/cli</code> and run the following command to initialize the CLI</p>
+<pre><code class="lang-bash">./gr8_CONFIGURE.sh <span class="string">"youremail@company.com"</span> <span class="string">"password"</span></code></pre>
+<p>You should receive a JSON response like this:</p>
+<pre><code class="lang-json">{
+  "<span class="attribute">token</span>": <span class="value"><span class="string">"tok-abcd1234ABCD"</span></span>,
+  "<span class="attribute">expires</span>": <span class="value"><span class="string">"2014-05-18T05:26:41.823Z"</span></span>,
+  "<span class="attribute">act_id</span>": <span class="value"><span class="string">"act-12345678"</span>
+</span>}</code></pre>
+<p>This will initialize the CLI and place a file (<code>~/.gr8bi_token</code>) that authenticates the CLI for use with the service 30 days.</p>
+<h2 id="step-2-upload-and-run-example-">Step 2 (Upload and Run Example)</h2>
+<p>Head to <code>GR8_BI_EXTRAS_LOCATION/cli</code> and run the following command:</p>
+<pre><code class="lang-bash">./gr8_pushAndRun.sh <span class="string">"../examples/output"</span> <span class="string">"output.kjb"</span> <span class="string">""</span></code></pre>
+<p>You should see a variety of output.  The gr8_pushAndRun.sh command does the following steps on your behalf:</p>
+<ul>
+<li>Zips the sample job (<code>../examples/output</code>) into a Job bundle.</li>
+<li><a href="/api.html#page:job-bundle,header:job-bundle-json-put">Uploads the Job Bundle</a> to gr8.BI</li>
+<li><a href="/api.html#page:job,header:job-json-post">Creates a Job</a> for execution (that includes the location in the file to run) <code>output.kjb</code></li>
+<li><a href="/api.html#page:run,header:run-http-run-a-job">Runs the Job</a> with no parameters (outpout.kjb needs no runtime parameters).</li>
+</ul>
+<p><em>NOTE</em> the run_id (<code>run-12345678</code>); we’ll use that in Step 3.</p>
+<h2 id="step-3-retrieve-run-status-">Step 3 (Retrieve Run Status)</h2>
+<p>Execute the following commands to get updates on the run status for your run-id.</p>
+<pre><code class="lang-bash">./gr8_getRun.sh <span class="string">"run-12345678"</span></code></pre>
+<pre><code>{
+  "<span class="attribute">run_id</span>": <span class="value"><span class="string">"run-12345678"</span></span>,
+  "<span class="attribute">run_status</span>": <span class="value"><span class="string">"work.complete"</span></span>,
+  "<span class="attribute">job_id</span>": <span class="value"><span class="string">"job-12345678"</span></span>,
+  "<span class="attribute">params</span>": <span class="value">{}</span>,
+  "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-05-17T17:34:15.871Z"</span></span>,
+  "<span class="attribute">log_url</span>": <span class="value"><span class="string">"https://url.log"</span></span>,
+  "<span class="attribute">output_url</span>": <span class="value"><span class="string">"https://url.zip"</span></span>,
+  "<span class="attribute">exit_code</span>": <span class="value"><span class="number">0</span></span>,
+  "<span class="attribute">exec_seconds</span>": <span class="value"><span class="number">25</span>
+</span>}</code></pre>
+<p>Refer to the Get Run API documentation for <a href="/api.html#page:run,header:run-json-get">specifics on the values returned</a>.  Of particular note is:</p>
+<ul>
+<li><code>run_status</code> : This will indicate if the run is scheduled, running (work.started), or completed (work.complete).</li>
+<li><code>log_url</code> : This is a URL to view the log file.  The log file is updated periodically and will be available approximately 60 seconds after initial execution.  You can view the log in a web browser or view it via <code>curl &quot;https://url.log&quot;</code>.</li>
+<li><code>exit_code</code> : If a run is a complete, this is the overall job completion status.  0 indicates successful run, other values indicate some sort of error (check <code>log_url</code>).</li>
+</ul>
+</div></div><a href="#page:getting-started-api" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:private-beta" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'getting-started-api', style: {marginTop: page() == 'getting-started-api' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="getting-started-api">Getting Started API&nbsp;<a href="#page:getting-started-api"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h2 id="prerequisites">Prerequisites</h2>
+<p>This guide assumes you have a basic knowledge of ETL, Kettle and how to create a Kettle jobs and transformations.  You can use one of our example jobs to test the service, but to do any real work, you’ll need to <a href="http://sourceforge.net/projects/pentaho/files/Data%20Integration/5.0.1-stable/">download</a>, <a href="http://wiki.pentaho.com/display/EAI/Getting+Started">learn</a> and use Kettle.</p>
+<p>Additionally, we assume you have a data flow written in Kettle that you are ready to execute on our cloud service.  If you’d like a start with our <a href="testJobBundle.zip">testJobBundle</a>, you’re welcome to and skip to Step 2.</p>
+<p>We assume you have access to <code>curl</code>.  </p>
+<p>We will use <code>act-12345678</code> and <code>tok-abcd1234ABCD</code> during the rest of this getting started guide; however, we assume that you would substitute the actual account id and token you received during private beta enablement.</p>
+<h2 id="step-1-prepare-your-data-flow-">Step 1 (Prepare your Data Flow)</h2>
+<ul>
+<li>Zip up all files you need as part of your job so that all the KTR and KJB needed to run your job (along with any other templates, etc) are in a zip.  </li>
+<li>Make sure to note (use <code>unzip -l</code> if needed) the location in the zip file for the master KJB file you want started.  Often there are several KJB files in a bundle, you need to have the location of the job (<code>path_in_zip/myjob.kjb</code>) you want executed.</li>
+</ul>
+<h2 id="step-2-upload-your-data-flow-">Step 2 (Upload your Data Flow)</h2>
+<p>The zip file that contains your Data Flow is called a Bundle.  You can upload it via curl using the following command (replace act-12345678 with your account, tok-abcd1234ABCD with your token, and bundle.zip with the name of your zip file you created in Step 1).</p>
+<pre><code><span class="comment">curl</span> <span class="literal">-</span><span class="comment">X</span> <span class="comment">POST</span> <span class="comment">\</span>
+<span class="literal">-</span><span class="literal">-</span><span class="comment">data</span><span class="literal">-</span><span class="comment">binary</span> <span class="comment">@bundle</span><span class="string">.</span><span class="comment">zip</span> <span class="comment">\</span>
+<span class="literal">-</span><span class="comment">H</span> <span class="comment">'Content</span><span class="literal">-</span><span class="comment">Type:</span> <span class="comment">application/zip'</span> <span class="comment">\</span>
+<span class="literal">-</span><span class="comment">H</span> <span class="comment">"X</span><span class="literal">-</span><span class="comment">Auth</span><span class="literal">-</span><span class="comment">Token:</span> <span class="comment">tok</span><span class="literal">-</span><span class="comment">abcd1234ABCD"</span> <span class="comment">\</span>
+<span class="comment">https://api</span><span class="string">.</span><span class="comment">gr8</span><span class="string">.</span><span class="comment">bi/current/act</span><span class="literal">-</span><span class="comment">12345678/jobBundle</span></code></pre>
+<p>You should receive a response that includes the <code>bun_id</code> for your newly created bundle.  You’ll need this for Step 3!  We’ll refer to this id as <code>bun-12345678</code> in subsequent steps</p>
+<p>The full documentation for <a href="http://www.gr8.bi/api.html#page:job-bundle,header:job-bundle-json-put">upload bundle</a> is in our <a href="http://www.gr8.bi/api.html">API documentation</a>.</p>
+<h2 id="step-3-create-a-job-">Step 3 (Create a Job)</h2>
+<p>Let’s create the job, so it’s ready for execution!  You can create the job by executing the following curl command:</p>
+<pre><code><span class="comment">curl</span> <span class="literal">-</span><span class="comment">s</span> <span class="literal">-</span><span class="comment">X</span> <span class="comment">POST</span> <span class="comment">\</span>
+<span class="literal">-</span><span class="comment">H</span> <span class="comment">"Content</span><span class="literal">-</span><span class="comment">Type:</span> <span class="comment">application/json"</span> <span class="comment">\</span>
+<span class="literal">-</span><span class="comment">d</span> <span class="comment">'{</span> <span class="comment">"bun_id"</span> <span class="comment">:</span> <span class="comment">"bun_id_from_STEP2"</span><span class="string">,</span><span class="comment">"job_entry_point"</span> <span class="comment">:</span> <span class="comment">"path_in_zip/myjob</span><span class="string">.</span><span class="comment">kjb"}'</span> <span class="comment">\</span>
+<span class="literal">-</span><span class="literal">-</span><span class="comment">header</span> <span class="comment">"X</span><span class="literal">-</span><span class="comment">Auth</span><span class="literal">-</span><span class="comment">Token:</span> <span class="comment">tok</span><span class="literal">-</span><span class="comment">abcd1234ABCD"</span> <span class="comment">\</span>
+<span class="comment">"https://api</span><span class="string">.</span><span class="comment">gr8</span><span class="string">.</span><span class="comment">bi/current/act</span><span class="literal">-</span><span class="comment">12345678/job"</span></code></pre>
+<p>If you are using the testJobBundle.zip, the job_entry_point is <code>test-job.kjb</code>.</p>
+<p>You should receive a job_id for the newly created job.  We’ll use that in step 4, and refer to it as <code>job-12345678</code>.</p>
+<p>The full documentation for <a href="http://www.gr8.bi/api.html#page:job,header:job-json-post">create job</a> is in our <a href="http://www.gr8.bi/api.html">API documentation</a>.</p>
+<h2 id="step-4-run-your-job-">Step 4 (Run your Job)</h2>
+<p>Let’s run our job!  Excute the following curl command:</p>
+<pre><code><span class="comment">curl</span> <span class="literal">-</span><span class="comment">s</span> <span class="literal">-</span><span class="comment">X</span> <span class="comment">POST</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">H</span> <span class="comment">"Content</span><span class="literal">-</span><span class="comment">Type:</span> <span class="comment">application/json"</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="comment">d</span> <span class="comment">'{</span> <span class="comment">"job_id"</span> <span class="comment">:</span> <span class="comment">"job</span><span class="literal">-</span><span class="comment">12345678"}'</span> <span class="comment">\</span>
+  <span class="literal">-</span><span class="literal">-</span><span class="comment">header</span> <span class="comment">"X</span><span class="literal">-</span><span class="comment">Auth</span><span class="literal">-</span><span class="comment">Token:</span> <span class="comment">tok</span><span class="literal">-</span><span class="comment">abcd1234ABCD"</span> <span class="comment">\</span>
+  <span class="comment">"https://api</span><span class="string">.</span><span class="comment">gr8</span><span class="string">.</span><span class="comment">bi/current/act</span><span class="literal">-</span><span class="comment">12345678/run"</span></code></pre>
+<p>Most Data Flows start execution within 60 seconds!</p>
+<p>If your Data Flow causes any affects (FTPs a file, pushes to S3, etc) it shouldn’t be long before you see those affects!  We’ll also check the status and logs in the next step!</p>
+<p>You should receive a run_id, along with the current state of the run.  We will use this run_id to check the status, and access the log file.</p>
+<p>The full documentation for <a href="http://www.gr8.bi/api.html#page:run,header:run-json-put">run job</a> is in our <a href="http://www.gr8.bi/api.html">API documentation</a>.</p>
+<h2 id="step-5-check-status-and-retrieve-logs-">Step 5 (Check status and Retrieve Logs)</h2>
+<p>Let’s check the status of the run!  Execute the following curl command:</p>
+<pre><code><span class="comment">curl</span> <span class="comment">https://api</span><span class="string">.</span><span class="comment">gr8</span><span class="string">.</span><span class="comment">bi/current/act</span><span class="literal">-</span><span class="comment">12345678/run/run</span><span class="literal">-</span><span class="comment">12345678?token=tok</span><span class="literal">-</span><span class="comment">abcd1234ABCD</span></code></pre>
+<p>You should receive a JSON response that includes details about the run:</p>
+<pre><code>{
+  "<span class="attribute">run_id</span>" : <span class="value"><span class="string">"run-12345678"</span>
+  </span>,"<span class="attribute">run_status</span>" : <span class="value"><span class="string">"work.complete"</span>
+  </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:46:08.568Z"</span>
+  </span>,"<span class="attribute">job_id</span>" : <span class="value"><span class="string">"job-12345678"</span>
+  </span>,"<span class="attribute">log_url</span>" : <span class="value"><span class="string">"https://biglongURL.com"</span>
+</span>}</code></pre>
+<p>If your “run_status” is <code>work.complete</code> then you should also see a log_url that has the log file for your job run.  You can paste this URL into a web browser or use curl again to review the log:</p>
+<pre><code>curl https:<span class="comment">//biglongURL.com</span></code></pre>
+<p>If your run status is <code>scheduled.ready</code> your run is waiting to run on one of our machiens.  If it’s <code>work.started</code> your Data Flow is running, but has not completed yet.</p>
+<p>The full documentation for <a href="http://www.gr8.bi/api.html#page:run,header:run-json-get">get run</a> is in our <a href="http://www.gr8.bi/api.html">API documentation</a>.</p>
+</div></div><a href="#page:examples" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:getting-started-fast" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'examples', style: {marginTop: page() == 'examples' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="examples">Examples&nbsp;<a href="#page:examples"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>Many examples, showing different aspects of how to use the gr8.BI service are released and updated on github.  Free and Open Source.</p>
+<p><a href="https://github.com/nagoodman/gr8bi_extras/tree/master/examples">Examples site at Github</a></p>
+<p>There are examples of how to receive SMS messages and respond, upload HTML sites to remote sites, receive files from email, etc.</p>
+</div></div><a href="#page:command-line-interface" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:getting-started-api" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'command-line-interface', style: {marginTop: page() == 'command-line-interface' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="command-line-interface">Command Line Interface&nbsp;<a href="#page:command-line-interface"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>A simple command line interface, roughed up in cURL and bash is <a href="https://github.com/nagoodman/gr8bi_extras/tree/master/cli">available on github</a>.</p>
+</div></div><a href="#page:designing-data-flows" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:examples" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'designing-data-flows', style: {marginTop: page() == 'designing-data-flows' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="designing-data-flows">Designing Data Flows&nbsp;<a href="#page:designing-data-flows"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>Create a solution using Kettle (files only).  Nuff ‘said. Actually, not Nuff ‘said but this section needs some filling in!</p>
+<p>Until them, checkout the <a href="https://github.com/nagoodman/gr8bi_extras/tree/master/examples">examples at Github</a></p>
+</div></div><a href="#page:runtime" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:command-line-interface" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'runtime', style: {marginTop: page() == 'runtime' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="runtime">Runtime&nbsp;<a href="#page:runtime"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h2 id="kettle-environment">Kettle Environment</h2>
+<h3 id="variables">Variables</h3>
+<p>Variables have been set GLOBALLY for the entire data flow run prior to your data flow executing.  Some are special variables set by the data flow service:</p>
+<ul>
+<li><code>BI_GR8_OUTPUT_DIR</code> - This contains the location of the output directory.  Any files placed in this directory, will be zipped and saved at the completion of the <code>run</code></li>
+<li><code>BI_GR8_SMTP_HOST</code> - The HOSTNAME for sending SMTP via gr8.BI provided account. </li>
+<li><code>BI_GR8_SMTP_PORT</code> - The PORT for sending SMTP via gr8.BI provided account. </li>
+<li><code>BI_GR8_SMTP_USER</code> - The USER for sending SMTP via gr8.BI provided account. </li>
+<li><code>BI_GR8_SMTP_PASSWORD</code> - The PASSWORD for sending SMTP via gr8.BI provided account. </li>
+<li><code>BI_GR8_RUN_PAYLOAD</code> - The location of the file on the machine, that has binary data if provided with the run.  For instance, if you performed an HTTP PUT of an excel file, the file is now on the server on the filesystem at the location contained in the variable.</li>
+</ul>
+<p>In addition to the standard data flow service variables, any data flow <code>params</code> passed to the <a href="/api.html#page:run,header:run-run-a-job-webform">web services to create runs</a> will also be available.  For instance, you if included “key1=value1” on the URL when <a href="/api.html#page:run,header:run-run-a-job-webform">running a job</a> then <code>key1</code> will be defined and available globablly</p>
+<h3 id="version">Version</h3>
+<p>gr8.BI currently runs a standard version of <a href="http://sourceforge.net/projects/pentaho/files/Data%20Integration/5.0.1-stable/">Kettle 5.0.1 CE Edition</a>.  We plan to support multiple versions of Kettle in the future; we also reserve the right to run on a slightly modified version of Kettle in the future.</p>
+<h2 id="hardware-and-os">Hardware and OS</h2>
+<p>Your Data Flows will typically need not interact with the environment directly.  Kettle, as a Java project, has very little dependency on the OS for libraries.  Even as such, here is some information about the OS:</p>
+<ul>
+<li>Debian 7 Wheezy</li>
+<li>64 Bit</li>
+<li>Oracle JDK 7u45 Installed</li>
+</ul>
+<p>While the most important aspect will be how well your Data Flow performs, we believe we are providing a high performance Data processing node suitable to almost all Data Flow tasks.  Data Flows currently run on the following virtual server machines:</p>
+<ul>
+<li>Modern cloud server, with 2 virtual core.</li>
+<li>1.8 GB of RAM  (1.5 GB Java Heap)</li>
+<li>10 GB Disk Space (8 GB usable by flow)</li>
+</ul>
+<p><strong>NOTE</strong>: We currently run on a google compute engine in the US <code>us-central1-a</code> but have future plans for other providers and APAC/EMEA.</p>
+</div></div><a href="#page:limitations-and-quotas" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:designing-data-flows" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'limitations-and-quotas', style: {marginTop: page() == 'limitations-and-quotas' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="limitations-and-quotas">Limitations and Quotas&nbsp;<a href="#page:limitations-and-quotas"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h2 id="data-flow-limitations">Data Flow Limitations</h2>
+<p>The following are limitations when running Data Flows</p>
+<h3 id="file-and-directory-limitations">File and Directory limitations</h3>
+<p>You are limited to reading and writing on the local filesystem to:</p>
+<ul>
+<li>/tmp/ (<code>java.io.tmpdir</code>) for temporary sorting/etc</li>
+<li>/grbi/customer/* for any and all file system access, temp files, and output files.</li>
+</ul>
+<h3 id="network-limitations">Network Limitations</h3>
+<ul>
+<li>No outbound SMTP traffic on port 25.  gr8.BI provides a set of credentials (quota-ed and monitored) for sending outbound emails.  Kettle/Variables section for specifics.</li>
+<li>No inbound connections of any kind are allowed.</li>
+</ul>
+<h3 id="kjb-ktr-limitations">KJB/KTR Limitations</h3>
+<ul>
+<li>No access to system executables are allowed.  Any Data Flow step that needs access to the OS for execution (bulkloaders, etc) will fail with a hard error.</li>
+<li>Job Bundles can contain any number of files, and subdirectories.  The total combined size of the bundle can not exceed 20MB (zipped).</li>
+<li>Database logging should NOT be enabled!  Kettle allows you to setup logging to a database, our service will eventually collect and manage this for Data Flows so your KTR and KJBs should not use/require this functionality.</li>
+</ul>
+<h3 id="kettle-properties-or-shared-xml">kettle.properties or shared.xml</h3>
+<ul>
+<li>Currently we do not support user created kettle.properties and shared.xml files.  You can create your own properties file (or .yaml) file, include it with your bundle, and set variables at the start of your data flow as a workaround.</li>
+</ul>
+<h2 id="service-quotas">Service Quotas</h2>
+<h3 id="run">Run</h3>
+<p>The following are the default quotas for using the gr8.BI service.</p>
+<p><strong>NOTE</strong>: These are standard limits for PRIVATE BETA; contact us if you need more.  If the service emerges from PRIVATE BETA to a paid service, paid plans will offer much larger capacities.</p>
+<ul>
+<li><em>API Calls Monthly</em> : Each account is limited to 150,000 API calls per month.</li>
+<li><em>API Calls per minute</em> : Each account is limited to 250 API calls per minute. Additionally, each IP is limited to 250 API calls per minute.</li>
+<li><em>Data Flow Minutes Monthly</em> : Each account is limited to a total of 25,000 ETL minutes per month.</li>
+<li><em>Data Flow Concurrency</em> : Each account is limited to having 5 jobs running at any given time; additional jobs are queued and will be executed once other jobs have completed. </li>
+<li><em>Bandwidth Incoming Monthly</em> : Each instance is allowed to consume as much incoming bandwidth (from Internet to the Data Flow service) as desired.</li>
+<li><em>Bandwidth Outgoing Monthly</em> : Each account is limited to 200GB of outbound traffic.  Outbound traffic is all traffic from Data Flow service outbound, and access of URLs provided by the service (such as log_url, output_url, etc).</li>
+<li><em>Other Things We Haven’t Thought of</em> : We’ll add to this list as we understand how people are using the service and we need to ensure fairness and service availability.</li>
+</ul>
+</div></div><a href="#page:pricing" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:runtime" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'pricing', style: {marginTop: page() == 'pricing' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="pricing">Pricing&nbsp;<a href="#page:pricing"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p><strong>Free during PRIVATE BETA</strong>.  </p>
+<p>We will give notice via email of at <strong>least 60 days</strong> before we require billing enablement and charging for utilization.</p>
+<h2 id="estimated-pricing">Estimated Pricing</h2>
+<p>We intend to provide pricing that allows for true utility computing; our pricing model is still be developed.  We believe there will always be a variable <em>per minute</em> cost per ETL Data Flow, but want to consider monthly plans with included minutes to smooth forecast and budget estimation.</p>
+<p>We haven’t decided on if we’ll have a FREE plan or not. </p>
+</div></div><a href="#page:limitations-and-quotas" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by <a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a></p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="//code.jquery.com/jquery-1.10.1.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script type="text/javascript">
+(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script type="text/javascript">
+(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script><script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script><script type="text/javascript">
+(function() {
+  var App;
+
+  App = (function() {
+    function App() {
+      this.page = ko.observable('home');
+    }
+
+    return App;
+
+  })();
+
+  window.app = new App();
+
+  window.onhashchange = function() {
+    var parts, v, vars, _i, _len, _ref;
+    vars = {};
+    _ref = location.hash.substr(1).split(',');
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      v = _ref[_i];
+      parts = v.split(':');
+      vars[parts[0]] = parts[1];
+    }
+    window.app.page(vars.page || 'home');
+    if (vars.header) {
+      return $("#" + vars.header)[0].scrollIntoView(true);
+    } else {
+      return window.scrollTo(0, 0);
+    }
+  };
+
+  ko.applyBindings(window.app);
+
+  window.onhashchange();
+
+}).call(this);
+</script></html>

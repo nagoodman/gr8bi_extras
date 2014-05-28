@@ -1,0 +1,661 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><title>gr8.BI API Documentation</title><link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css"><link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.2/css/font-awesome.min.css"><link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Inconsolata|Raleway:200"><style>/* Highlight.js Theme */
+.tomorrow-comment,pre .comment,pre .title{color:#8e908c}.tomorrow-red,pre .attribute,pre .css .class,pre .css .id,pre .css .pseudo,pre .html .doctype,pre .regexp,pre .ruby .constant,pre .tag,pre .variable,pre .xml .doctype,pre .xml .pi,pre .xml .tag .title{color:#c82829}.tomorrow-orange,pre .built_in,pre .constant,pre .literal,pre .number,pre .params,pre .preprocessor{color:#f5871f}.tomorrow-yellow,pre .class,pre .css .rules .attribute,pre .ruby .class .title{color:#eab700}.tomorrow-green,pre .header,pre .inheritance,pre .ruby .symbol,pre .string,pre .value,pre .xml .cdata{color:#718c00}.tomorrow-aqua,pre .css .hexcolor{color:#3e999f}.tomorrow-blue,pre .coffeescript .title,pre .function,pre .javascript .title,pre .perl .sub,pre .python .decorator,pre .python .title,pre .ruby .function .title,pre .ruby .title .keyword{color:#4271ae}.tomorrow-purple,pre .javascript .function,pre .keyword{color:#8959a8}pre code{display:block;background:#fff;color:#4d4d4c;font-family:Menlo,Monaco,Consolas,monospace;line-height:1.5;border:1px solid #ccc;padding:10px}</style><style type="text/css">body,
+h4,
+h5 {
+  font-family: 'Roboto' sans-serif !important;
+}
+h1,
+h2,
+h3,
+.aglio {
+  font-family: 'Raleway' sans-serif !important;
+}
+h1 a,
+h2 a,
+h3 a,
+h4 a,
+h5 a {
+  display: none;
+}
+h1:hover a,
+h2:hover a,
+h3:hover a,
+h4:hover a,
+h5:hover a {
+  display: inline;
+}
+code {
+  color: #444;
+  background-color: #ddd;
+  font-family: 'Inconsolata' monospace !important;
+}
+a[data-target] {
+  cursor: pointer;
+}
+h4 {
+  font-size: 100%;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.back-to-top {
+  position: fixed;
+  z-index: 1;
+  bottom: 0px;
+  right: 24px;
+  padding: 4px 8px;
+  background-color: #eee;
+  text-decoration: none !important;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  border-left: 1px solid rgba(0,0,0,0.1);
+  border-right: 1px solid rgba(0,0,0,0.1);
+  border-top-left-radius: 3px;
+  border-top-right-radius: 3px;
+}
+.panel {
+  overflow: hidden;
+}
+.panel-heading code {
+  color: #c7254e;
+  background-color: transparent;
+}
+.panel-heading h3 {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+a.list-group-item {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+a.list-group-item.heading {
+  background-color: #f5f5f5;
+}
+.list-group-item.collapse {
+  display: none;
+}
+</style></head><body><a href="#top" class="text-muted back-to-top"><i class="fa fa-toggle-up"></i>&nbsp;Back to top</a><div class="container"><div class="row"><nav id="nav" style="margin-top: 38px;" class="col-md-3 collapse hidden-sm hidden-xs"><div class="list-group"><a href="#" class="list-group-item heading">Home</a></div><div class="list-group"><a href="#page:security" class="list-group-item heading">Security</a></div><div class="list-group"><a href="#page:api-general" class="list-group-item heading">API General</a></div><div class="list-group"><a href="#page:account" class="list-group-item heading">Account</a><a href="#page:account,header:account-json" class="list-group-item"><i class="fa fa-bars"></i>&nbsp;JSON</a><a href="#page:account,header:account-json-put" style="padding-left: 32px" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;Create Account</a><a href="#page:account,header:account-json-delete" style="padding-left: 32px" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;Delete Account</a><a href="#page:account,header:account-json-get" style="padding-left: 32px" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Get Account</a><a href="#page:account,header:account-create-account-webform" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;Create Account WebForm</a></div><div class="list-group"><a href="#page:token" class="list-group-item heading">Token</a><a href="#page:token,header:token-create-token" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;Create Token</a></div><div class="list-group"><a href="#page:job" class="list-group-item heading">Job</a><a href="#page:job,header:job-json" class="list-group-item"><i class="fa fa-bars"></i>&nbsp;JSON</a><a href="#page:job,header:job-json-get" style="padding-left: 32px" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Get Job</a><a href="#page:job,header:job-json-post" style="padding-left: 32px" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;Create Job</a><a href="#page:job,header:job-json-delete" style="padding-left: 32px" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;Delete Job</a><a href="#page:job,header:job-list-jobs" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;List Jobs</a></div><div class="list-group"><a href="#page:run" class="list-group-item heading">Run</a><a href="#page:run,header:run-json" class="list-group-item"><i class="fa fa-bars"></i>&nbsp;JSON</a><a href="#page:run,header:run-json-get" style="padding-left: 32px" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Get Run Info</a><a href="#page:run,header:run-json-put" style="padding-left: 32px" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;Run a Job</a><a href="#page:run,header:run-http-run-a-job" class="list-group-item"><i class="fa fa-bars"></i>&nbsp;HTTP Run a Job</a><a href="#page:run,header:run-http-run-a-job-get" style="padding-left: 32px" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Run a Job</a><a href="#page:run,header:run-http-run-a-job-post" style="padding-left: 32px" class="list-group-item"><i class="fa fa-plus-square"></i>&nbsp;Run a Job</a><a href="#page:run,header:run-http-run-a-job-put" style="padding-left: 32px" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;Run a Job</a><a href="#page:run,header:run-list-runs" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;List Runs</a></div><div class="list-group"><a href="#page:job-bundle" class="list-group-item heading">Job Bundle</a><a href="#page:job-bundle,header:job-bundle-json" class="list-group-item"><i class="fa fa-bars"></i>&nbsp;JSON</a><a href="#page:job-bundle,header:job-bundle-json-get" style="padding-left: 32px" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;Get Job Bundle</a><a href="#page:job-bundle,header:job-bundle-json-put" style="padding-left: 32px" class="list-group-item"><i class="fa fa-pencil"></i>&nbsp;Upload Job Bundle</a><a href="#page:job-bundle,header:job-bundle-json-delete" style="padding-left: 32px" class="list-group-item"><i class="fa fa-warning"></i>&nbsp;Delete Job Bundle</a><a href="#page:job-bundle,header:job-bundle-list-job-bundles" class="list-group-item"><i class="fa fa-arrow-circle-down"></i>&nbsp;List Job Bundles</a></div><p style="text-align: center"><a href="https://api.gr8.bi/current">https://api.gr8.bi/current</a></p></nav><div class="col-md-9"><div data-bind="visible: page() == 'home'"><header><div class="page-header"><h1 id="top">gr8.BI API Documentation</h1></div></header><div class="description"><p><strong><strong>NOTE: This service is in PRIVATE BETA until further notice</strong></strong></p>
+<p>This is the primary <strong>API documentation</strong> for the cloud services provided by gr8.BI.  The service allows you to build data flows and jobs, using visual tools, and execute them in the cloud paying only for compute resources used.   There are other resources avialable for getting started, and learning how to build your data flows to run on the gr8.bi service.</p>
+<p>Some important overall concepts you should know about the API:</p>
+<ul>
+<li><p>RESTful endpoints</p>
+<p>The API is a collection of RESTful endpoints, that allow for creating, running, and management of data flows in the cloud service.</p>
+</li>
+<li><p>SSL only</p>
+<p>The API is available through SSL only.  HTTP request will give a hard error.</p>
+</li>
+<li><p>JSON only</p>
+<p>The API currently only supports interaction using JSON.  We may support xml in the future, but it’s currently not on the roadmap.  Additionally, there are some endpoints that accept Multipart data (file uploading, etc) but unless noted they are all standard JSON REST endpoints.</p>
+</li>
+<li><p>Unsupported but planned features</p>
+<p>JSONP support, gzip compression, API rate throttling, fine grained token access, parameters at [account|job] level, <del>all <strong>list</strong> REST endpoints (get jobs)</del>, webhooks, HTML waiting pages, <del>redirect URL support</del>, <del>object names</del>, job grouping, timeout run support, encryption services, general purpose annotation kv tagging, metric add to Job Run (<del>elapsed time</del>, network stats, etc).  Bundle versions, <del>inline runJob (post ktr, createJob and run all in one request)</del>.  <del>Pretty JSON</del> PDI Plugins/marketplace.  Different Kettle versions.  Talend, CoverETL support.</p>
+</li>
+<li><p>Unsupported and not planned features</p>
+<p>XML support, SOAP </p>
+</li>
+</ul>
+</div><a href="#page:security" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'security', style: {marginTop: page() == 'security' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="security">Security&nbsp;<a href="#page:security"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h1 id="authentication">Authentication</h1>
+<p>There are two methods for authenticating to the API.  Email and Password are used for senstive operations (account and tokens) and tokens are used for all other operations (running jobs, etc).</p>
+<ul>
+<li><p>Username and Password (<a href="#page:account">Account</a> and <a href="#page:token">Token</a>)</p>
+<p>Using basic HTTP auth header (<code>Authorization: Basic</code>), over SSL, one can use the account owner (email) and password (mypassword) to authenticate and authorize against all Account endpoints.  Using this method is akin to having “root” access and is only allowed when necessary (managing tokens, and accounts).  Everything in the “Account” group requires HTTP Basic Auth, everything else is tokens.</p>
+</li>
+<li><p>Tokens (<a href="#page:job">Jobs</a>, <a href="#page:job-bundle">JobBundles</a>, and <a href="#page:run">Runs</a>)</p>
+<p>Tokens are the primary method for using all endpoints.  Tokens can be sent via a header (<code>X-Auth-Token</code>), URL parameter (<code>token</code>).  They are scoped to grant authorization at the same full scope as the original account owner, so anyone who has a token has similar and equal access to resources on the account.  Tokens can be managed  as documented below.  Tokens will eventually have operation (Read Only, Modify, etc) restrictions along with scope (only for this particular job).</p>
+</li>
+</ul>
+<p>Tokens are JWT tokens; eventually we intend to allow per-account JWT signing and fine grained resource access.</p>
+<h1 id="unauthorized-or-unauthenticated">Unauthorized or Unauthenticated</h1>
+<p>If you try to access the service with invalid credentials, expired tokens or try to perform operations on objects you don’t have access to you will receive a JSON unauthorized object.  We’ll return code 401, and an object that will provide some description of what went wrong:</p>
+<pre><code class="lang-json">{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}</code></pre>
+</div></div><a href="#page:api-general" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'api-general', style: {marginTop: page() == 'api-general' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="api-general">API General&nbsp;<a href="#page:api-general"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h1 id="object-identifiers">Object Identifiers</h1>
+<p>All objects (Accounts, Runs, Job Runs, Schedules) have a unique ID, that both identifies the object and type.  The ID is a 12 digit string (except tokens which are longer).  The first 3 digits is the “type” of object identifier, followed by a dash, then a code ([0-9a-zA-Z]).  The ID for the object is the entire string, including the object type.</p>
+<p>The following is the dictionary of types, and prefixes:</p>
+<ul>
+<li>Account (<strong>act</strong>) <code>act-12345678</code></li>
+<li>Job (<strong>job</strong>) <code>job-12345678</code></li>
+<li>Job Bundle (<strong>bun</strong>) <code>bun-12345678</code></li>
+<li>Job Run (<strong>run</strong>) <code>run-12345678</code></li>
+</ul>
+<h1 id="redirect">Redirect</h1>
+<p>All endpoints support redirect URL paramters that will be used, instead of returning the original JSON response.  The response object that would have originally been returned is “query-string-i-fied” using the <a href="https://github.com/visionmedia/node-querystring">qs</a> package.  Parameters are a little “funny” on the redirect, but that’s the nature of taking a complex object (JSON) and making it into key/value pairs.</p>
+<ul>
+<li><code>redirect_success</code> - Is used when the operation was successful, and a normal 200 response was about to be returned.  It redirects to whatever URL was provided using response code 302, appending the return object on as paramters using <code>qs</code> as mentioned above.</li>
+<li><code>redirect_error</code> - Is used when the operation failed.  The failure could be because of an error, or an authentication issue.  The redirect be to the URL location provided using response code 302, and will append the return object on as paramters using <code>qs</code> as mentioned above.</li>
+</ul>
+<h1 id="query-syntax">Query Syntax</h1>
+<p>Listing endpoints support filtering, limiting, and ordering of results through URL parameters.</p>
+<ul>
+<li><code>limit</code> - Maximum number of records to return.  <em>Default: 10</em>.</li>
+<li><code>q</code> - Is a mostly <a href="https://cloudant.com/for-developers/search/">Lucene style query</a>, that serves to limit the result set.  There are a very limited set of fields available for querying, and all fields are indexed in their entiretiy (“My Job Name” won’t match a query “Job”).  The short and skinny, a query would look like <code>q=run_status:work.complete</code>.  <em>Default: Nothing</em></li>
+<li><code>order</code> - Allows different sort ordering.  Also follows <a href="https://cloudant.com/for-developers/search/">Lucene ordering</a> syntax.  _Default: <code>-created_at&lt;string&gt;</code></li>
+</ul>
+<p>Calling a list endpoint with none of these parameters would return the ten most recently created Jobs/JobBundles/Runs/etc.</p>
+<p>All objects have the following indexed and available for querying:</p>
+<ul>
+<li><code>default</code> - The id of the object (<code>bun-12345678</code>, <code>run-12345678</code>)</li>
+<li><code>created_at</code> - An ISO Date string (suitable for collation/ordering) <code>2014-05-26T22:00:47.676Z</code></li>
+</ul>
+<p>Individual <code>/list</code> endpoints in the API below indicate which additional fields they have available for use in <code>q</code> and <code>order</code>.</p>
+<h1 id="errors">Errors</h1>
+<p>Errors from either user submission issues (missing paramters, etc) or from actual service issues (EEEKS!) return an error JSON object, along with response code <code>401</code>.</p>
+<p>We need to document error codes (eventually) but hopefully the message is enough to provide a useful amount of debugging:</p>
+<pre><code class="lang-json">{
+  &quot;code&quot;: &quot;500&quot;,
+  &quot;message&quot;: &quot;Fail Whale Released&quot;,
+  &quot;description&quot;: &quot;FAIL WHALE!
+W     W      W        
+W        W  W     W    
+              &#39;.  W      
+  .-&quot;&quot;-._     \ \.--|  
+ /       &quot;-..__) .-&#39;   
+|     _         /      
+\&#39;-.__,   .__.,&#39;       
+ `&#39;----&#39;._\--&#39;      
+VVVVVVVVVVVVVVVVVVVVV&quot;
+}</code></pre>
+</div></div><a href="#page:account" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:security" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'account', style: {marginTop: page() == 'account' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="account">Account&nbsp;<a href="#page:account"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>The endpoints for Accounts are a bit different, since they are outside the scope of an individual resource inside an account (every resource is owned by an account).  They all require Username/Password athentication and disallow token authorization.</p>
+<h4 id="account-json">JSON&nbsp;<a href="#page:account,header:account-json"><i class="fa fa-link"></i></a></h4><section id="account-json-put" class="panel panel-warning"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Create Account</span><a href="#page:account,header:account-json-put" class="btn btn-xs btn-warning">PUT</a>&nbsp;<code>/act{/act_id}</code></div><div class="panel-body"><p>Creates a new account.  New accounts require verification (email and billing) prior to using other aspects of the API</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#997623" class="pull-right">Toggle</a></li><li id="997623" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">email</span>" : <span class="value"><span class="string">"someemail@email.com"</span>
+ </span>,"<span class="attribute">password</span>" : <span class="value"><span class="string">"mypassword"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#346329" class="pull-right">Toggle</a></li><li id="346329" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">act_id</span>" : <span class="value"><span class="string">"act-12345678"</span>
+  </span>,"<span class="attribute">email</span>" : <span class="value"><span class="string">"someemail@email.com"</span>
+  </span>,"<span class="attribute">status</span>" : <span class="value"><span class="string">"PendingVerification"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#238429" class="pull-right">Toggle</a></li><li id="238429" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#789007" class="pull-right">Toggle</a></li><li id="789007" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><section id="account-json-delete" class="panel panel-danger"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Delete Account</span><a href="#page:account,header:account-json-delete" class="btn btn-xs btn-danger">DELETE</a>&nbsp;<code>/act{/act_id}</code></div><div class="panel-body"><p>Queues up the specified account for closing.  While the web service responds immediately, account closure is an asynchronous process that occures over a few business days.  Once complete, the account and it’s correpsonding data are deleted from primary systems.  NOTE: Some data, including audit and logging data will remain even after an account closure.</p>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID to remove</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#764374" class="pull-right">Toggle</a></li><li id="764374" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Authorization</span>: <span class="string">Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#254211" class="pull-right">Toggle</a></li><li id="254211" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#803107" class="pull-right">Toggle</a></li><li id="803107" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#168776" class="pull-right">Toggle</a></li><li id="168776" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><section id="account-json-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Get Account</span><a href="#page:account,header:account-json-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/act{/act_id}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+-u someemail\@email.com:mypassword \
+https://api.gr8.bi/current/act/act-<span class="number">12345678</span></code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#876346" class="pull-right">Toggle</a></li><li id="876346" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Authorization</span>: <span class="string">Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#220637" class="pull-right">Toggle</a></li><li id="220637" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">act_id</span>" : <span class="value"><span class="string">"act-12345678"</span>
+  </span>,"<span class="attribute">email</span>" : <span class="value"><span class="string">"someemail@email.com"</span>
+  </span>,"<span class="attribute">status</span>" : <span class="value"><span class="string">"PendingVerification"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#270495" class="pull-right">Toggle</a></li><li id="270495" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#243140" class="pull-right">Toggle</a></li><li id="243140" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#575884" class="pull-right">Toggle</a></li><li id="575884" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="account-create-account-webform">Create Account WebForm&nbsp;<a href="#page:account,header:account-create-account-webform"><i class="fa fa-link"></i></a></h4><section id="account-create-account-webform-post" class="panel panel-success"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Create Account</span><a href="#page:account,header:account-create-account-webform-post" class="btn btn-xs btn-success">POST</a>&nbsp;<code>/act{/act_id}{?redirectURL,email,password}</code></div><div class="panel-body"><p>This POST is only for Web Forms.  It should only be used by the www.gr8.BI website.</p>
+<pre><code>&lt;form action=<span class="string">"https://api.gr8.bi/current/act"</span>&gt;
+  <span class="keyword">...</span>
+&lt;/form&gt;</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>email</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>someemail@email.com</span></span><p>Email address for account</p>
+</dd><dt>password</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>mypassword</span></span><p>Password for account</p>
+</dd><dt>redirectURL</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>https://www.gr8.BI/signup_succes.html</span></span><p>Location to redirect to after successful completion, in lieu of displaying the JSON.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#170925" class="pull-right">Toggle</a></li><li id="170925" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/x-www-form-urlencoded</span><br></code></pre><h5>Body</h5><pre><code>  email=someemail<span class="variable">@email</span>.com&amp;password=mypassword
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#220948" class="pull-right">Toggle</a></li><li id="220948" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">act_id</span>" : <span class="value"><span class="string">"act-12345678"</span>
+  </span>,"<span class="attribute">email</span>" : <span class="value"><span class="string">"someemail@email.com"</span>
+  </span>,"<span class="attribute">status</span>" : <span class="value"><span class="string">"PendingVerification"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#347350" class="pull-right">Toggle</a></li><li id="347350" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#330468" class="pull-right">Toggle</a></li><li id="330468" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#707675" class="pull-right">Toggle</a></li><li id="707675" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section></div></div><a href="#page:token" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:api-general" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'token', style: {marginTop: page() == 'token' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="token">Token&nbsp;<a href="#page:token"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><p>Tokens are the way to access the API endpoints and authorize and authenticate.  Currently, we have global tokens (<code>tok-</code> prefixed) but plan to support JWT signing (per account scoped tokens) in the future.</p>
+<h4 id="token-create-token">Create Token&nbsp;<a href="#page:token,header:token-create-token"><i class="fa fa-link"></i></a></h4><section id="token-create-token-post" class="panel panel-success"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Create Token</span><a href="#page:token,header:token-create-token-post" class="btn btn-xs btn-success">POST</a>&nbsp;<code>/act/token</code></div><div class="panel-body"><p>Creates a new token.  Any token grants all access to all resources for the users account (<code>act_id</code>).   The <code>act_id</code> for the token is determined from the Email Address used in the HTTP Authorization Headers.  Expire time is calculated from the current time, adding the <code>expire_seconds_from_now</code> number of seconds.  If omitted, (30*60) is the default (30 minutes).</p>
+</div><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#605955" class="pull-right">Toggle</a></li><li id="605955" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br><span class="attribute">Authorization</span>: <span class="string">Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">expire_seconds_from_now</span>" : <span class="value"><span class="string">"86400"</span> ## one day from now
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#862225" class="pull-right">Toggle</a></li><li id="862225" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">token</span>" : <span class="value"><span class="string">"tok-abcd.1234.ABCD"</span>
+  </span>,"<span class="attribute">expires</span>" : <span class="value"><span class="string">"2014-02-22T23:45:37Z"</span> ## ISO <span class="number">8601</span> Date Format in UTC
+  </span>,"<span class="attribute">act_id</span>" : <span class="value"><span class="string">"act-12345678"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#291050" class="pull-right">Toggle</a></li><li id="291050" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#788666" class="pull-right">Toggle</a></li><li id="788666" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#784349" class="pull-right">Toggle</a></li><li id="784349" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section></div></div><a href="#page:job" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:account" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'job', style: {marginTop: page() == 'job' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="job">Job&nbsp;<a href="#page:job"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="job-json">JSON&nbsp;<a href="#page:job,header:job-json"><i class="fa fa-link"></i></a></h4><p>Once created, Jobs are web accessible ready to go Data Flow solutions.  Once a job is created, it is available for running</p>
+<section id="job-json-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Get Job</span><a href="#page:job,header:job-json-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/{act_id}/job{/job_id}{?token}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/job/job-<span class="number">12345678</span></code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>job_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>job-12345678</span></span><p>The job to get</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the job.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#85638" class="pull-right">Toggle</a></li><li id="85638" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#420545" class="pull-right">Toggle</a></li><li id="420545" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="attribute">bun_id</span>": <span class="value"><span class="string">"bun-12345678"</span></span>,
+    "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:46:08.568Z"</span></span>,
+    "<span class="attribute">job_entry_point</span>": <span class="value"><span class="string">"/dir_in_zip/job.kjb"</span></span>,
+    "<span class="attribute">job_id</span>": <span class="value"><span class="string">"job-12345678"</span></span>,
+    "<span class="attribute">name</span>": <span class="value"><span class="string">"Name of Job, may or may not be present"</span> 
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#531916" class="pull-right">Toggle</a></li><li id="531916" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#789439" class="pull-right">Toggle</a></li><li id="789439" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#792697" class="pull-right">Toggle</a></li><li id="792697" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><section id="job-json-post" class="panel panel-success"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Create Job</span><a href="#page:job,header:job-json-post" class="btn btn-xs btn-success">POST</a>&nbsp;<code>/{act_id}/job{/job_id}{?token}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+-X POST
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/job</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the job.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#672188" class="pull-right">Toggle</a></li><li id="672188" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre><h5>Body</h5><pre><code><span class="comment">{</span>
+  <span class="comment">"bun_id"</span> <span class="comment">:</span> <span class="comment">"bun</span><span class="literal">-</span><span class="comment">12345678"</span> <span class="comment">#</span> <span class="comment">(required)</span>
+  <span class="string">,</span><span class="comment">"job_entry_point"</span> <span class="comment">:</span> <span class="comment">"dirinbundle/myjob</span><span class="string">.</span><span class="comment">kjb"</span>
+  <span class="string">,</span><span class="comment">"name"</span> <span class="comment">"Name</span> <span class="comment">of</span> <span class="comment">Job</span><span class="string">,</span> <span class="comment">optional"</span>
+  <span class="string">,</span><span class="comment">"run_email_address":</span> <span class="comment">"act</span><span class="literal">-</span><span class="comment">12345678_job</span><span class="literal">-</span><span class="comment">12345678_hashofstuff@live</span><span class="string">.</span><span class="comment">gr8</span><span class="string">.</span><span class="comment">bi"</span>
+<span class="comment">}</span>
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#260295" class="pull-right">Toggle</a></li><li id="260295" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">job_id</span>" : <span class="value"><span class="string">"job-12345678"</span>
+  </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:46:08.568Z"</span>
+  </span>,"<span class="attribute">bun_id</span>" : <span class="value"><span class="string">"bun-12345678"</span>
+  </span>,"<span class="attribute">job_entry_point</span>" : <span class="value"><span class="string">"dirinbundle/myjob.kjb"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#278229" class="pull-right">Toggle</a></li><li id="278229" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#757287" class="pull-right">Toggle</a></li><li id="757287" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#6905" class="pull-right">Toggle</a></li><li id="6905" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><section id="job-json-delete" class="panel panel-danger"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Delete Job</span><a href="#page:job,header:job-json-delete" class="btn btn-xs btn-danger">DELETE</a>&nbsp;<code>/{act_id}/job{/job_id}{?token}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+-X DELETE
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/job/job-<span class="number">12345678</span></code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>job_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>job-12345678</span></span><p>The job to delete</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the job.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#124268" class="pull-right">Toggle</a></li><li id="124268" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#862735" class="pull-right">Toggle</a></li><li id="862735" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#76825" class="pull-right">Toggle</a></li><li id="76825" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#212490" class="pull-right">Toggle</a></li><li id="212490" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="job-list-jobs">List Jobs&nbsp;<a href="#page:job,header:job-list-jobs"><i class="fa fa-link"></i></a></h4><section id="job-list-jobs-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">List Jobs</span><a href="#page:job,header:job-list-jobs-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/{act_id}/job/list{?token,limit,q,order}</code></div><div class="panel-body"><p>Returns a list of the most recent <code>jobs</code> created.</p>
+<pre><code class="lang-bash">curl \
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/job/list</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the job.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>Maximum number items to return</p>
+</dd><dt>q</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>run_status:work.complete</span></span><p><a href="#page:api-general,header:query-syntax">Filter query</a>.</p>
+</dd><dt>order</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>+run_status&lt;string&gt;</span></span><p><a href="#page:api-general,header:query-syntax">Ordering of results</a>.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#225327" class="pull-right">Toggle</a></li><li id="225327" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#311712" class="pull-right">Toggle</a></li><li id="311712" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>[
+    {
+        "<span class="attribute">bun_id</span>": <span class="value"><span class="string">"bun-12345678"</span></span>,
+        "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:46:25.785Z"</span></span>,
+        "<span class="attribute">job_entry_point</span>": <span class="value"><span class="string">"job.kjb"</span></span>,
+        "<span class="attribute">job_id</span>": <span class="value"><span class="string">"job-12345678"</span></span>,
+        "<span class="attribute">run_email_address</span>": <span class="value"><span class="string">"act-12345678_job-12345678_hashofstuff@live.gr8.bi"</span>
+    </span>},
+    {
+        "<span class="attribute">bun_id</span>": <span class="value"><span class="string">"bun-12345678"</span></span>,
+        "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:46:08.568Z"</span></span>,
+        "<span class="attribute">job_entry_point</span>": <span class="value"><span class="string">"job2.kjb"</span></span>,
+        "<span class="attribute">job_id</span>": <span class="value"><span class="string">"job-123456788"</span></span>,
+        "<span class="attribute">run_email_address</span>": <span class="value"><span class="string">"act-12345678_job-123456788_hashofstuff@live.gr8.bi"</span>
+    </span>}
+]
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#650657" class="pull-right">Toggle</a></li><li id="650657" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#938940" class="pull-right">Toggle</a></li><li id="938940" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#951030" class="pull-right">Toggle</a></li><li id="951030" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section></div></div><a href="#page:run" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:token" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'run', style: {marginTop: page() == 'run' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="run">Run&nbsp;<a href="#page:run"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="run-json">JSON&nbsp;<a href="#page:run,header:run-json"><i class="fa fa-link"></i></a></h4><p>Runs are individual executions of an Data Flow <code>job</code>.  </p>
+<section id="run-json-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Get Run Info</span><a href="#page:run,header:run-json-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/{act_id}/run{/run_id}{?token}}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/run/run-<span class="number">12345678</span></code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>run_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>run-12345678</span></span><p>The run to get</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the Run.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#720500" class="pull-right">Toggle</a></li><li id="720500" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#433390" class="pull-right">Toggle</a></li><li id="433390" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">run_id</span>" : <span class="value"><span class="string">"run-12345678"</span>
+  </span>,"<span class="attribute">run_status</span>" : <span class="value"><span class="string">"scheduled.ready"</span> 
+  </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:46:08.568Z"</span>
+  </span>,"<span class="attribute">job_id</span>" : <span class="value"><span class="string">"job-12345678"</span>
+  </span>,"<span class="attribute">params</span>" :   <span class="value"># optional {
+    "<span class="attribute">param1</span>" : <span class="value"><span class="string">"value1"</span> </span>,"<span class="attribute">param2</span>" : <span class="value"><span class="string">"value2"</span>
+    </span>}
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#478612" class="pull-right">Toggle</a></li><li id="478612" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#971847" class="pull-right">Toggle</a></li><li id="971847" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#814036" class="pull-right">Toggle</a></li><li id="814036" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><section id="run-json-put" class="panel panel-warning"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Run a Job</span><a href="#page:run,header:run-json-put" class="btn btn-xs btn-warning">PUT</a>&nbsp;<code>/{act_id}/run{/run_id}{?token}}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+-X POST
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/run</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the Run.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#867340" class="pull-right">Toggle</a></li><li id="867340" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">job_id</span>" : <span class="value"><span class="string">"job-12345678"</span> # required
+  </span>,"<span class="attribute">params</span>" :   <span class="value"># optional {
+    "<span class="attribute">param1</span>" : <span class="value"><span class="string">"value1"</span> </span>,"<span class="attribute">param2</span>" : <span class="value"><span class="string">"value2"</span>
+    </span>}
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#964162" class="pull-right">Toggle</a></li><li id="964162" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+    "<span class="attribute">run_id</span>": <span class="value"><span class="string">"run-12345678"</span></span>,
+    "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:49:46.436Z"</span></span>,
+    "<span class="attribute">job_id</span>": <span class="value"><span class="string">"job-12345678"</span></span>,
+    "<span class="attribute">params</span>": <span class="value">{
+      "<span class="attribute">param1</span>" : <span class="value"><span class="string">"value1"</span> </span>,"<span class="attribute">param2</span>" : <span class="value"><span class="string">"value2"</span>
+    </span>}</span>,
+    "<span class="attribute">run_status</span>": <span class="value"><span class="string">"scheduled.pending"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#325517" class="pull-right">Toggle</a></li><li id="325517" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#331633" class="pull-right">Toggle</a></li><li id="331633" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#171012" class="pull-right">Toggle</a></li><li id="171012" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="run-http-run-a-job">HTTP Run a Job&nbsp;<a href="#page:run,header:run-http-run-a-job"><i class="fa fa-link"></i></a></h4><section id="run-http-run-a-job-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Run a Job</span><a href="#page:run,header:run-http-run-a-job-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/{act_id}/job/{job_id}/run/http{?token,key1,key2,keyN}}</code></div><div class="panel-body"><p>Identical to <a href="#page:run,header:run-http-run-a-job-put">PUT</a></p>
+</div><ul class="list-group"></ul></section><section id="run-http-run-a-job-post" class="panel panel-success"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Run a Job</span><a href="#page:run,header:run-http-run-a-job-post" class="btn btn-xs btn-success">POST</a>&nbsp;<code>/{act_id}/job/{job_id}/run/http{?token,key1,key2,keyN}}</code></div><div class="panel-body"><p>Identical to <a href="#page:run,header:run-http-run-a-job-put">PUT</a></p>
+</div><ul class="list-group"></ul></section><section id="run-http-run-a-job-put" class="panel panel-warning"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Run a Job</span><a href="#page:run,header:run-http-run-a-job-put" class="btn btn-xs btn-warning">PUT</a>&nbsp;<code>/{act_id}/job/{job_id}/run/http{?token,key1,key2,keyN}}</code></div><div class="panel-body"><p>This endpoint allows a job to be run, using ONLY the URL including the passing of all URL parameters to the job.  Additionally, any payload (binary data) pushed as part of the request will be available as a file to the job (<code>BI_GR8_RUN_PAYLOAD</code>). </p>
+<pre><code class="lang-bash">curl \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/job-<span class="number">12345678</span>/run?token=tok-<span class="number">123456</span>&amp;myKey1=myVal1&amp;myKey2=somethingToPassToJob</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>job_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>job-12345678</span></span><p>Which Job to run</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to run the job.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd><dt>keyN</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>somethingToPassToJob</span></span><p>Any paramters that the API does not recognize will be passed (as environment variables) to the <code>job</code> run.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#871406" class="pull-right">Toggle</a></li><li id="871406" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">anycontent/mimetype</span><br><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre><h5>Body</h5><pre><code><span class="keyword">Binary</span> <span class="keyword">or</span> <span class="keyword">text</span> data
+</code></pre></li><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#882309" class="pull-right">Toggle</a></li><li id="882309" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#715474" class="pull-right">Toggle</a></li><li id="715474" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">run_id</span>" : <span class="value"><span class="string">"run-12345678"</span>
+  </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:49:38.534Z"</span>
+  </span>,"<span class="attribute">run_status</span>" : <span class="value"><span class="string">"scheduled.ready"</span> 
+  </span>,"<span class="attribute">job_id</span>" : <span class="value"><span class="string">"job-12345678"</span>
+  </span>,"<span class="attribute">params</span>" :   <span class="value"># optional {
+    "<span class="attribute">param1</span>" : <span class="value"><span class="string">"value1"</span> </span>,"<span class="attribute">param2</span>" : <span class="value"><span class="string">"value2"</span>
+    </span>}
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#238812" class="pull-right">Toggle</a></li><li id="238812" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#723092" class="pull-right">Toggle</a></li><li id="723092" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#262228" class="pull-right">Toggle</a></li><li id="262228" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="run-list-runs">List Runs&nbsp;<a href="#page:run,header:run-list-runs"><i class="fa fa-link"></i></a></h4><section id="run-list-runs-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">List Runs</span><a href="#page:run,header:run-list-runs-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/{act_id}/run/list{?token,limit,order,q}}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/run/list</code></pre>
+<p>In addition to the <a href="#page:api-general,header:query-syntax">standard fields</a> the following additional fields are available for querying and ordering:</p>
+<ul>
+<li><code>run_status</code> : The current status of the run. </li>
+</ul>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the Run.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>Maximum number items to return</p>
+</dd><dt>q</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>run_status:work.complete</span></span><p><a href="#page:api-general,header:query-syntax">Filter query</a>.</p>
+</dd><dt>order</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>+run_status&lt;string&gt;</span></span><p><a href="#page:api-general,header:query-syntax">Ordering of results</a>.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#772771" class="pull-right">Toggle</a></li><li id="772771" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#729797" class="pull-right">Toggle</a></li><li id="729797" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>[
+    {
+        "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:49:46.436Z"</span></span>,
+        "<span class="attribute">job_id</span>": <span class="value"><span class="string">"job-12345678"</span></span>,
+        "<span class="attribute">params</span>": <span class="value">{
+            "<span class="attribute">param1</span>" : <span class="value"><span class="string">"value1"</span> </span>,"<span class="attribute">param2</span>" : <span class="value"><span class="string">"value2"</span>
+        </span>}</span>,
+        "<span class="attribute">run_id</span>": <span class="value"><span class="string">"run-12345678"</span></span>,
+        "<span class="attribute">run_status</span>": <span class="value"><span class="string">"work.started"</span>
+    </span>},
+    {
+        "<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:49:38.534Z"</span></span>,
+        "<span class="attribute">job_id</span>": <span class="value"><span class="string">"job-12345678"</span></span>,
+        "<span class="attribute">params</span>": <span class="value">{
+            "<span class="attribute">param1</span>" : <span class="value"><span class="string">"value1"</span> </span>,"<span class="attribute">param2</span>" : <span class="value"><span class="string">"value2"</span>
+        </span>}</span>,
+        "<span class="attribute">run_id</span>": <span class="value"><span class="string">"run-11223344"</span></span>,
+        "<span class="attribute">run_status</span>": <span class="value"><span class="string">"work.started"</span>
+    </span>}
+]
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#466260" class="pull-right">Toggle</a></li><li id="466260" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#788960" class="pull-right">Toggle</a></li><li id="788960" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#479347" class="pull-right">Toggle</a></li><li id="479347" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section></div></div><a href="#page:job-bundle" class="btn btn-default pull-right">Next&nbsp;<i class="fa fa-arrow-circle-right"></i></a><a href="#page:job" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div><div data-bind="visible: page() == 'job-bundle', style: {marginTop: page() == 'job-bundle' ? '38px' : ''}"><div class="panel panel-default"><div class="panel-heading"><h3 id="job-bundle">Job Bundle&nbsp;<a href="#page:job-bundle"><i class="fa fa-link"></i></a></h3></div><div class="panel-body"><h4 id="job-bundle-json">JSON&nbsp;<a href="#page:job-bundle,header:job-bundle-json"><i class="fa fa-link"></i></a></h4><p>Job Bundles are zipped up definitions of Data Flow code.  For instance, for Kettle the bundle would contain Transformation files (.ktr) and Job Files (.kjb).  Bundles may also contain other resources (such as template .xls files, etc) but don’t contain any transient data.  The Bundles are the “code” of your Data Flow solution.</p>
+<section id="job-bundle-json-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Get Job Bundle</span><a href="#page:job-bundle,header:job-bundle-json-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/{act_id}/jobBundle{/bun_id}{?token,name}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/jobBundle/bun-<span class="number">12345678</span>?token=tok-abcd12349ABCD</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>bun_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bun-12345678</span></span><p>The Job Bundle to retrieve</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the jobBundle.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#803119" class="pull-right">Toggle</a></li><li id="803119" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#673936" class="pull-right">Toggle</a></li><li id="673936" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">bun_id</span>" : <span class="value"><span class="string">"bun-12345678"</span>
+  </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:49:38.534Z"</span>
+  </span>,"<span class="attribute">bundle_url</span>" : <span class="value"><span class="string">"https://tempurl.com/bun-12345678.zip"</span>
+  </span>,"<span class="attribute">name</span>" : <span class="value"><span class="string">"My Job Bundle Namel"</span> // may or may not be present
+  </span>,"<span class="attribute">current_version</span>": <span class="value">{
+      "<span class="attribute">version</span>": <span class="value"><span class="string">"1401246858409000"</span></span>,
+      "<span class="attribute">etag</span>": <span class="value"><span class="string">"\"5e35f20b3952ed54db670f40d5a61608\""</span></span>,
+      "<span class="attribute">hash</span>": <span class="value"><span class="string">"crc32c=sSPBDQ==, md5=XjXyCzlS7VTbZw9A1aYWCA=="</span></span>,
+      "<span class="attribute">size</span>": <span class="value"><span class="string">"4428"</span></span>,
+      "<span class="attribute">date</span>": <span class="value"><span class="string">"2014-05-28T03:14:18.592Z"</span>
+  </span>}
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#561172" class="pull-right">Toggle</a></li><li id="561172" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#947179" class="pull-right">Toggle</a></li><li id="947179" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#212141" class="pull-right">Toggle</a></li><li id="212141" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><section id="job-bundle-json-put" class="panel panel-warning"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Upload Job Bundle</span><a href="#page:job-bundle,header:job-bundle-json-put" class="btn btn-xs btn-warning">PUT</a>&nbsp;<code>/{act_id}/jobBundle{/bun_id}{?token,name}</code></div><div class="panel-body"><p>Post a ZIP file and create or update a Job Bundle.  </p>
+<p>Create a new Job Bundle:</p>
+<pre><code class="lang-bash">curl -X PUT \
+--data-binary @testJobBundle.zip \
+-H <span class="string">'Content-Type: application/zip'</span> \
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+<span class="string">"https://api.gr8.bi/current/act-123456/jobBundle"</span></code></pre>
+<p>Update an existing Job Bundle:</p>
+<pre><code class="lang-bash">curl -X PUT \
+--data-binary @testJobBundle.zip \
+-H <span class="string">'Content-Type: application/zip'</span> \
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+<span class="string">"https://api.gr8.bi/current/act-123456/jobBundle/bun-12345678"</span></code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>bun_id</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bun-12345678</span></span><p>If updating a bundle, this is required.  If creating a new bundle, it is NOT required.</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to create a jobBundle in an account.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd><dt>name</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>My Job Bundle Name</span></span><p>Name the Job Bundle</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#706517" class="pull-right">Toggle</a></li><li id="706517" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/zip</span><br><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre><h5>Body</h5><pre><code><span class="keyword">Binary</span> contents <span class="keyword">of</span> zipFile
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#661206" class="pull-right">Toggle</a></li><li id="661206" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">bun_id</span>" : <span class="value"><span class="string">"bun-12345678"</span>
+  </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:49:38.534Z"</span>
+  </span>,"<span class="attribute">bundle_url</span>" : <span class="value"><span class="string">"https://tempurl.com/bun-12345678.zip"</span>
+  </span>,"<span class="attribute">current_version</span>": <span class="value">{
+      "<span class="attribute">version</span>": <span class="value"><span class="string">"1401246858409000"</span></span>,
+      "<span class="attribute">etag</span>": <span class="value"><span class="string">"\"5e35f20b3952ed54db670f40d5a61608\""</span></span>,
+      "<span class="attribute">hash</span>": <span class="value"><span class="string">"crc32c=sSPBDQ==, md5=XjXyCzlS7VTbZw9A1aYWCA=="</span></span>,
+      "<span class="attribute">size</span>": <span class="value"><span class="string">"4428"</span></span>,
+      "<span class="attribute">date</span>": <span class="value"><span class="string">"2014-05-28T03:14:18.592Z"</span>
+  </span>}
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#855712" class="pull-right">Toggle</a></li><li id="855712" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#457767" class="pull-right">Toggle</a></li><li id="457767" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#425356" class="pull-right">Toggle</a></li><li id="425356" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><section id="job-bundle-json-delete" class="panel panel-danger"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">Delete Job Bundle</span><a href="#page:job-bundle,header:job-bundle-json-delete" class="btn btn-xs btn-danger">DELETE</a>&nbsp;<code>/{act_id}/jobBundle{/bun_id}{?token,name}</code></div><div class="panel-body"><p>Delete a jobBundle</p>
+<pre><code class="lang-bash">curl \
+-X DELETE \
+-H <span class="string">"X-Auth-Token: tok-abcd1234ABCD"</span> \
+https://api.gr8.bi/current/act-<span class="number">123456</span>/jobBundle/bun-<span class="number">12345678</span></code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to create a jobBundle in an account.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd><dt>bun_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>bun-12345678</span></span><p>Bundle to delete</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#22831" class="pull-right">Toggle</a></li><li id="22831" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#989963" class="pull-right">Toggle</a></li><li id="989963" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#284893" class="pull-right">Toggle</a></li><li id="284893" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#388551" class="pull-right">Toggle</a></li><li id="388551" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section><h4 id="job-bundle-list-job-bundles">List Job Bundles&nbsp;<a href="#page:job-bundle,header:job-bundle-list-job-bundles"><i class="fa fa-link"></i></a></h4><section id="job-bundle-list-job-bundles-get" class="panel panel-info"><div class="panel-heading"><span style="text-transform: lowercase" class="pull-right">List Job Bundles</span><a href="#page:job-bundle,header:job-bundle-list-job-bundles-get" class="btn btn-xs btn-primary">GET</a>&nbsp;<code>/{act_id}/jobBundle/list{?token,limit,q,order}</code></div><div class="panel-body"><pre><code class="lang-bash">curl \
+https://api.gr8.bi/current/act-<span class="number">12345678</span>/jobBundle/list?token=tok-abcd12349ABCD</code></pre>
+</div><ul class="list-group"><li class="list-group-item bg-default"><strong>Parameters</strong></li><li class="list-group-item"><dl class="dl-horizontal"><dt>act_id</dt><dd><code>string</code>&nbsp;<span class="required">(required)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>act-12345678</span></span><p>Account ID</p>
+</dd><dt>token</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>tok-abcd1234ABCD</span></span><p>Access token which grants rights to the jobBundle.  If not present in URL, <code>X-Auth-Token</code> header is required.</p>
+</dd><dt>limit</dt><dd><code>number</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>10</span></span><p>Maximum number items to return</p>
+</dd><dt>q</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>run_status:work.complete</span></span><p><a href="#page:api-general,header:query-syntax">Filter query</a>.</p>
+</dd><dt>order</dt><dd><code>string</code>&nbsp;<span>(optional)</span>&nbsp;<span class="text-muted example"><strong>Example:&nbsp;</strong><span>+run_status&lt;string&gt;</span></span><p><a href="#page:api-general,header:query-syntax">Ordering of results</a>.</p>
+</dd></dl></li></ul><ul class="list-group"><li class="list-group-item"><strong>Request</strong><a data-toggle="collapse" data-target="#172684" class="pull-right">Toggle</a></li><li id="172684" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">X-Auth-Token</span>: <span class="string">tok-abcd1234ABCD</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>200</code></strong><a data-toggle="collapse" data-target="#244" class="pull-right">Toggle</a></li><li id="244" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>[
+    {
+        "<span class="attribute">bun_id</span>": <span class="value"><span class="string">"bun-11223344"</span>
+        </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:31:38.856Z"</span>
+        </span>,"<span class="attribute">current_version</span>": <span class="value">{
+            "<span class="attribute">version</span>": <span class="value"><span class="string">"1401246858409000"</span></span>,
+            "<span class="attribute">etag</span>": <span class="value"><span class="string">"\"5e35f20b3952ed54db670f40d5a61608\""</span></span>,
+            "<span class="attribute">hash</span>": <span class="value"><span class="string">"crc32c=sSPBDQ==, md5=XjXyCzlS7VTbZw9A1aYWCA=="</span></span>,
+            "<span class="attribute">size</span>": <span class="value"><span class="string">"4428"</span></span>,
+            "<span class="attribute">date</span>": <span class="value"><span class="string">"2014-05-28T03:14:18.592Z"</span>
+        </span>}
+    </span>},
+    {
+        "<span class="attribute">bun_id</span>": <span class="value"><span class="string">"bun-12345678"</span>
+        </span>,"<span class="attribute">created_at</span>": <span class="value"><span class="string">"2014-04-14T21:28:14.461Z"</span>
+        </span>,"<span class="attribute">current_version</span>": <span class="value">{
+            "<span class="attribute">version</span>": <span class="value"><span class="string">"1401246858409000"</span></span>,
+            "<span class="attribute">etag</span>": <span class="value"><span class="string">"\"5e35f20b3952ed54db670f40d5a61608\""</span></span>,
+            "<span class="attribute">hash</span>": <span class="value"><span class="string">"crc32c=sSPBDQ==, md5=XjXyCzlS7VTbZw9A1aYWCA=="</span></span>,
+            "<span class="attribute">size</span>": <span class="value"><span class="string">"4428"</span></span>,
+            "<span class="attribute">date</span>": <span class="value"><span class="string">"2014-05-28T03:14:18.592Z"</span>
+        </span>}
+    </span>}
+]
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>302</code></strong><a data-toggle="collapse" data-target="#21422" class="pull-right">Toggle</a></li><li id="21422" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Location</span>: <span class="string">https://valueofsuccessorfailureURL.com?seeSectionOnAPIGeneral</span><br></code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>401</code></strong><a data-toggle="collapse" data-target="#701994" class="pull-right">Toggle</a></li><li id="701994" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"401"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Unauthorized"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Invalid token"</span>
+</span>}
+</code></pre></li><li class="list-group-item"><strong>Response&nbsp;&nbsp;<code>500</code></strong><a data-toggle="collapse" data-target="#867018" class="pull-right">Toggle</a></li><li id="867018" class="list-group-item collapse"><h5>Headers</h5><pre><code><span class="attribute">Content-Type</span>: <span class="string">application/json</span><br></code></pre><h5>Body</h5><pre><code>{
+  "<span class="attribute">code</span>": <span class="value"><span class="string">"500"</span></span>,
+  "<span class="attribute">message</span>": <span class="value"><span class="string">"Hard Fail"</span></span>,
+  "<span class="attribute">description</span>": <span class="value"><span class="string">"Fall over hard hard hard!"</span>
+</span>}
+</code></pre></li></ul></section></div></div><a href="#page:run" class="btn btn-default"><i class="fa fa-arrow-circle-left"></i> Previous</a><div class="clearfix"></div><hr></div></div></div></div><p style="text-align: center;" class="text-muted">Generated by <a href="https://github.com/danielgtaylor/aglio" class="aglio">aglio</a></p><div id="localFile" style="display: none; position: absolute; top: 0; left: 0; width: 100%; color: white; background: red; font-size: 150%; text-align: center; padding: 1em;">This page may not display correctly when opened as a local file. Instead, view it from a web server.
+
+</div></body><script src="//code.jquery.com/jquery-1.10.1.min.js"></script><script src="//netdna.bootstrapcdn.com/bootstrap/3.0.2/js/bootstrap.min.js"></script><script type="text/javascript">
+(function() {
+  if (location.protocol === 'file:') {
+    document.getElementById('localFile').style.display = 'block';
+  }
+
+}).call(this);
+</script><script type="text/javascript">
+(function() {
+  $('table').addClass('table');
+
+}).call(this);
+</script><script src="http://cdnjs.cloudflare.com/ajax/libs/knockout/3.0.0/knockout-min.js"></script><script type="text/javascript">
+(function() {
+  var App;
+
+  App = (function() {
+    function App() {
+      this.page = ko.observable('home');
+    }
+
+    return App;
+
+  })();
+
+  window.app = new App();
+
+  window.onhashchange = function() {
+    var parts, v, vars, _i, _len, _ref;
+    vars = {};
+    _ref = location.hash.substr(1).split(',');
+    for (_i = 0, _len = _ref.length; _i < _len; _i++) {
+      v = _ref[_i];
+      parts = v.split(':');
+      vars[parts[0]] = parts[1];
+    }
+    window.app.page(vars.page || 'home');
+    if (vars.header) {
+      return $("#" + vars.header)[0].scrollIntoView(true);
+    } else {
+      return window.scrollTo(0, 0);
+    }
+  };
+
+  ko.applyBindings(window.app);
+
+  window.onhashchange();
+
+}).call(this);
+</script></html>
