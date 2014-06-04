@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>auto_document</name>
+    <name>auto_document_set_dir</name>
     <description/>
     <extended_description/>
     <trans_version/>
     <trans_type>Normal</trans_type>
-    <trans_status>0</trans_status>
     <directory>&#x2f;</directory>
     <parameters>
     </parameters>
@@ -67,19 +66,18 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;05&#x2f;28 15&#x3a;10&#x3a;03.634</created_date>
+  <created_date>2014&#x2f;06&#x2f;04 12&#x3a;03&#x3a;07.108</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;05&#x2f;28 15&#x3a;10&#x3a;03.634</modified_date>
+  <modified_date>2014&#x2f;06&#x2f;04 12&#x3a;03&#x3a;07.108</modified_date>
   </info>
   <notepads>
   </notepads>
   <order>
-  <hop> <from>Get File Names</from><to>Value Mapper</to><enabled>Y</enabled> </hop>
-  <hop> <from>Value Mapper</from><to>Automatic Documentation Output</to><enabled>Y</enabled> </hop>
+  <hop> <from>get one dir</from><to>set dir</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Automatic Documentation Output</name>
-    <type>AutoDoc</type>
+    <name>get one dir</name>
+    <type>RowsFromResult</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -88,30 +86,21 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename_field>filename</filename_field>
-    <file_type_field>filetype_mapper</file_type_field>
-    <target_file>&#x24;&#x7b;dir&#x7d;&#x2f;doc&#x2f;doc.html</target_file>
-    <output_type>HTML</output_type>
-    <include_name>Y</include_name>
-    <include_description>Y</include_description>
-    <include_extended_description>Y</include_extended_description>
-    <include_creation>N</include_creation>
-    <include_modification>N</include_modification>
-    <include_image>Y</include_image>
-    <include_logging_config>N</include_logging_config>
-    <include_last_exec_result>N</include_last_exec_result>
-    <include_image_area_list>N</include_image_area_list>
-     <cluster_schema/>
+    <fields>      <field>        <name>dir</name>
+        <type>String</type>
+        <length>-1</length>
+        <precision>-1</precision>
+        </field>      </fields>     <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>435</xloc>
-      <yloc>53</yloc>
+      <xloc>49</xloc>
+      <yloc>42</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Get File Names</name>
-    <type>GetFileNames</type>
+    <name>set dir</name>
+    <type>SetVariable</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -120,67 +109,19 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filter>
-      <filterfiletype>all_files</filterfiletype>
-    </filter>
-    <doNotFailIfNoFile>N</doNotFailIfNoFile>
-    <rownum>N</rownum>
-    <isaddresult>Y</isaddresult>
-    <filefield>N</filefield>
-    <rownum_field/>
-    <filename_Field/>
-    <wildcard_Field/>
-    <exclude_wildcard_Field/>
-    <dynamic_include_subfolders>N</dynamic_include_subfolders>
-    <limit>0</limit>
-    <file>
-      <name>&#x24;&#x7b;dir&#x7d;</name>
-      <filemask>.&#x2a;&#x5c;.kjb</filemask>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>Y</include_subfolders>
-      <name>&#x24;&#x7b;dir&#x7d;</name>
-      <filemask>.&#x2a;&#x5c;.ktr</filemask>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>Y</include_subfolders>
-    </file>
-     <cluster_schema/>
- <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>79</xloc>
-      <yloc>58</yloc>
-      <draw>Y</draw>
-      </GUI>
-    </step>
-
-  <step>
-    <name>Value Mapper</name>
-    <type>ValueMapper</type>
-    <description/>
-    <distribute>Y</distribute>
-    <custom_distribution/>
-    <copies>1</copies>
-         <partitioning>
-           <method>none</method>
-           <schema_name/>
-           </partitioning>
-    <field_to_use>extension</field_to_use>
-    <target_field>filetype_mapper</target_field>
-    <non_match_default/>
     <fields>
       <field>
-        <source_value>ktr</source_value>
-        <target_value>transformation</target_value>
-      </field>
-      <field>
-        <source_value>kjb</source_value>
-        <target_value>job</target_value>
-      </field>
-    </fields>
+        <field_name>dir</field_name>
+        <variable_name>dir</variable_name>
+        <variable_type>PARENT_JOB</variable_type>
+        <default_value/>
+        </field>
+      </fields>
+    <use_formatting>Y</use_formatting>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>252</xloc>
-      <yloc>56</yloc>
+      <xloc>217</xloc>
+      <yloc>35</yloc>
       <draw>Y</draw>
       </GUI>
     </step>

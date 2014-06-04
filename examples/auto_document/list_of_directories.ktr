@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <transformation>
   <info>
-    <name>auto_document</name>
+    <name>list_of_directories</name>
     <description/>
     <extended_description/>
     <trans_version/>
@@ -67,19 +67,41 @@
     <clusterschemas>
     </clusterschemas>
   <created_user>-</created_user>
-  <created_date>2014&#x2f;05&#x2f;28 15&#x3a;10&#x3a;03.634</created_date>
+  <created_date>2014&#x2f;06&#x2f;04 11&#x3a;41&#x3a;41.843</created_date>
   <modified_user>-</modified_user>
-  <modified_date>2014&#x2f;05&#x2f;28 15&#x3a;10&#x3a;03.634</modified_date>
+  <modified_date>2014&#x2f;06&#x2f;04 11&#x3a;41&#x3a;41.843</modified_date>
   </info>
   <notepads>
+    <notepad>
+      <note>List our examples, and output a row for each one</note>
+      <xloc>49</xloc>
+      <yloc>30</yloc>
+      <width>238</width>
+      <heigth>21</heigth>
+      <fontname>Arial</fontname>
+      <fontsize>10</fontsize>
+      <fontbold>N</fontbold>
+      <fontitalic>N</fontitalic>
+      <fontcolorred>0</fontcolorred>
+      <fontcolorgreen>0</fontcolorgreen>
+      <fontcolorblue>0</fontcolorblue>
+      <backgroundcolorred>255</backgroundcolorred>
+      <backgroundcolorgreen>205</backgroundcolorgreen>
+      <backgroundcolorblue>112</backgroundcolorblue>
+      <bordercolorred>100</bordercolorred>
+      <bordercolorgreen>100</bordercolorgreen>
+      <bordercolorblue>100</bordercolorblue>
+      <drawshadow>Y</drawshadow>
+    </notepad>
   </notepads>
   <order>
-  <hop> <from>Get File Names</from><to>Value Mapper</to><enabled>Y</enabled> </hop>
-  <hop> <from>Value Mapper</from><to>Automatic Documentation Output</to><enabled>Y</enabled> </hop>
+  <hop> <from>Directories of All Examples</from><to>Filter rows</to><enabled>Y</enabled> </hop>
+  <hop> <from>Filter rows</from><to>dir only</to><enabled>Y</enabled> </hop>
+  <hop> <from>dir only</from><to>Copy rows to result</to><enabled>Y</enabled> </hop>
   </order>
   <step>
-    <name>Automatic Documentation Output</name>
-    <type>AutoDoc</type>
+    <name>Copy rows to result</name>
+    <type>RowsToResult</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -88,29 +110,16 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <filename_field>filename</filename_field>
-    <file_type_field>filetype_mapper</file_type_field>
-    <target_file>&#x24;&#x7b;dir&#x7d;&#x2f;doc&#x2f;doc.html</target_file>
-    <output_type>HTML</output_type>
-    <include_name>Y</include_name>
-    <include_description>Y</include_description>
-    <include_extended_description>Y</include_extended_description>
-    <include_creation>N</include_creation>
-    <include_modification>N</include_modification>
-    <include_image>Y</include_image>
-    <include_logging_config>N</include_logging_config>
-    <include_last_exec_result>N</include_last_exec_result>
-    <include_image_area_list>N</include_image_area_list>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>435</xloc>
-      <yloc>53</yloc>
+      <xloc>486</xloc>
+      <yloc>80</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Get File Names</name>
+    <name>Directories of All Examples</name>
     <type>GetFileNames</type>
     <description/>
     <distribute>Y</distribute>
@@ -134,28 +143,23 @@
     <dynamic_include_subfolders>N</dynamic_include_subfolders>
     <limit>0</limit>
     <file>
-      <name>&#x24;&#x7b;dir&#x7d;</name>
-      <filemask>.&#x2a;&#x5c;.kjb</filemask>
+      <name>&#x24;&#x7b;Internal.Job.Filename.Directory&#x7d;&#x2f;..&#x2f;</name>
+      <filemask>.&#x2a;</filemask>
       <exclude_filemask/>
       <file_required>N</file_required>
-      <include_subfolders>Y</include_subfolders>
-      <name>&#x24;&#x7b;dir&#x7d;</name>
-      <filemask>.&#x2a;&#x5c;.ktr</filemask>
-      <exclude_filemask/>
-      <file_required>N</file_required>
-      <include_subfolders>Y</include_subfolders>
+      <include_subfolders>N</include_subfolders>
     </file>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>79</xloc>
-      <yloc>58</yloc>
+      <xloc>84</xloc>
+      <yloc>102</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
 
   <step>
-    <name>Value Mapper</name>
-    <type>ValueMapper</type>
+    <name>Filter rows</name>
+    <type>FilterRows</type>
     <description/>
     <distribute>Y</distribute>
     <custom_distribution/>
@@ -164,23 +168,56 @@
            <method>none</method>
            <schema_name/>
            </partitioning>
-    <field_to_use>extension</field_to_use>
-    <target_field>filetype_mapper</target_field>
-    <non_match_default/>
-    <fields>
-      <field>
-        <source_value>ktr</source_value>
-        <target_value>transformation</target_value>
-      </field>
-      <field>
-        <source_value>kjb</source_value>
-        <target_value>job</target_value>
-      </field>
-    </fields>
+<send_true_to/>
+<send_false_to/>
+    <compare>
+<condition>
+ <negated>Y</negated>
+ <conditions>
+  <condition>
+   <negated>N</negated>
+   <leftvalue>type</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>file</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  <condition>
+   <negated>N</negated>
+   <operator>OR</operator>
+   <leftvalue>short_filename</leftvalue>
+   <function>&#x3d;</function>
+   <rightvalue/>
+   <value><name>constant</name><type>String</type><text>zips</text><length>-1</length><precision>-1</precision><isnull>N</isnull><mask/></value>   </condition>
+  </conditions>
+ </condition>
+    </compare>
      <cluster_schema/>
  <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
-      <xloc>252</xloc>
-      <yloc>56</yloc>
+      <xloc>256</xloc>
+      <yloc>92</yloc>
+      <draw>Y</draw>
+      </GUI>
+    </step>
+
+  <step>
+    <name>dir only</name>
+    <type>SelectValues</type>
+    <description/>
+    <distribute>Y</distribute>
+    <custom_distribution/>
+    <copies>1</copies>
+         <partitioning>
+           <method>none</method>
+           <schema_name/>
+           </partitioning>
+    <fields>      <field>        <name>filename</name>
+        <rename>dir</rename>
+        <length>-2</length>
+        <precision>-2</precision>
+      </field>        <select_unspecified>N</select_unspecified>
+    </fields>     <cluster_schema/>
+ <remotesteps>   <input>   </input>   <output>   </output> </remotesteps>    <GUI>
+      <xloc>357</xloc>
+      <yloc>93</yloc>
       <draw>Y</draw>
       </GUI>
     </step>
