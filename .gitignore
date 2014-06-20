@@ -1,3 +1,4 @@
 examples/zips/*.zip
 cli/.lastresponse
 examples/**/doc
+**/.DS_Store
