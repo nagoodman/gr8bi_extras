@@ -8,7 +8,7 @@ if [ "$#" -ne 2 ]; then
   exit 0
 fi
 
-curl -L -s -X PUT \
+curl -L -s -X POST \
   --data-binary @$1 \
   -H 'Content-Type: application/zip' \
   -H "X-Auth-Token: $GR8_BI_TOK" \
