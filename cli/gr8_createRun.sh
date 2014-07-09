@@ -25,4 +25,4 @@ curl -s -X POST \
   -H "Content-Type: application/json" \
   -d "{ \"job_id\" : \"$1\", \"params\": {\"$KEY\": \"$VALUE\"}}" \
   --header "X-Auth-Token: $GR8_BI_TOK" \
-  "$BASE_URL/current/$GR8_BI_ACT/run" | tee $DIR/.lastresponse
+  "$GR8_BASE_URL/current/$GR8_BI_ACT/run" | tee $DIR/.lastresponse

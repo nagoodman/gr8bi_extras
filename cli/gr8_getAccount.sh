@@ -10,4 +10,4 @@ fi
 
 curl -s -u $1:$2 \
   -X GET \
-  $BASE_URL/current/act/$3 | tee $DIR/.lastresponse
+  $GR8_BASE_URL/current/act/$3 | tee $DIR/.lastresponse

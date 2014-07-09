@@ -21,4 +21,4 @@ curl -s -X POST \
   -H "Content-Type: application/json" \
   -d "{ \"bun_id\" : \"$1\",\"job_entry_point\" : \"$2\" $NAMESEG $PARAMSEG}" \
   --header "X-Auth-Token: $GR8_BI_TOK" \
-  "$BASE_URL/current/$GR8_BI_ACT/job" | tee $DIR/.lastresponse
+  "$GR8_BASE_URL/current/$GR8_BI_ACT/job" | tee $DIR/.lastresponse

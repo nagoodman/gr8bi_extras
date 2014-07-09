@@ -11,4 +11,4 @@ fi
 curl -s -X POST \
   -d "email=$1" \
   -d "password=$2" \
-  $BASE_URL/current/act | tee $DIR/.lastresponse
+  $GR8_BASE_URL/current/act | tee $DIR/.lastresponse

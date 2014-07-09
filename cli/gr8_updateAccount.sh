@@ -18,4 +18,4 @@ curl -s -X PATCH \
   -H "Content-Type: application/json" \
   -d "{ $SEG }" \
   -u "$1:$2" \
-  "$BASE_URL/current/act/$3" | tee $DIR/.lastresponse
+  "$GR8_BASE_URL/current/act/$3" | tee $DIR/.lastresponse

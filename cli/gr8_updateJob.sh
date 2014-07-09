@@ -18,4 +18,4 @@ curl -s -X PATCH \
   -H "Content-Type: application/json" \
   -d "{ $SEG }" \
   --header "X-Auth-Token: $GR8_BI_TOK" \
-  "$BASE_URL/current/$GR8_BI_ACT/job/$1" | tee $DIR/.lastresponse
+  "$GR8_BASE_URL/current/$GR8_BI_ACT/job/$1" | tee $DIR/.lastresponse

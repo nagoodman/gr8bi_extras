@@ -12,4 +12,4 @@ curl -L -s -X POST \
   --data-binary @$1 \
   -H 'Content-Type: application/zip' \
   -H "X-Auth-Token: $GR8_BI_TOK" \
-  $BASE_URL/current/$GR8_BI_ACT/jobBundle?name=$2 | tee $DIR/.lastresponse
+  $GR8_BASE_URL/current/$GR8_BI_ACT/jobBundle?name=$2 | tee $DIR/.lastresponse

@@ -10,4 +10,4 @@ fi
 
 curl -s -X PUT \
   --header "X-Auth-Token: $GR8_BI_TOK" \
-  "$BASE_URL/current/$GR8_BI_ACT/job/$1/run/http?$2" | tee $DIR/.lastresponse
+  "$GR8_BASE_URL/current/$GR8_BI_ACT/job/$1/run/http?$2" | tee $DIR/.lastresponse
