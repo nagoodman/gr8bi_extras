@@ -12,4 +12,4 @@ curl -s -u $1:$2 \
   -X POST \
   -H "Content-Type: application/json" \
   -d "{ \"expire_seconds_from_now\" : \"$3\"}" \
-  $GR8_GR8_BASE_URL/current/act/token | tee $DIR/.lastresponse
+  $GR8_BASE_URL/current/act/token | tee $DIR/.lastresponse
